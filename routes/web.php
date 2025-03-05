@@ -4,16 +4,28 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CuentaController;
 
-// Rutas de la página de inicio y otras vistas
+// Rutas de la página de inicio 
 Route::view('/', 'home.index')->name('index');
+
+//Rutas de habitaciones
 Route::view('home.habitaciones', 'home.habitaciones')->name('habitaciones');
-Route::view('home.reservas', 'home.reservas')->name('reservas');
 Route::view('rooms.estandar', 'rooms.estandar')->name('estandar');
 Route::view('rooms.matrimonio', 'rooms.matrimonio')->name('matrimonio');
 Route::view('rooms.suite', 'rooms.suite')->name('suite');
+
+//Rutas de reservas 
+Route::view('home.reservas', 'home.reservas')->name('reservas');
+
+//Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
-Route::view('auth.cuenta', 'auth.cuenta')->name('cuenta');
+
+//Rutas cuenta y auth
+Route::get('/mi-cuenta', [
+    CuentaController::class,
+    'index'
+])->middleware('auth')->name('cuenta');
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 

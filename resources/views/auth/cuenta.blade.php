@@ -43,67 +43,62 @@
                             <span class="tab active">Reservas</span>
                         </div>
 
-                        <div class="reservation-item">
-                            <div class="reservation-img"></div>
-                            <div class="reservation-info">
-                                <h4>Suite</h4>
-                                <p><strong>Check In:</strong> 12 Marzo 2025</p>
-                                <p><strong>Duración:</strong> 5 dias</p>
-                                <p><strong>Huespedes:</strong> 2 Adultos</p>
-                                <p class="price">200 €</p>
-                            </div>
-                            <button class="cancel-btn">Cancelar Reserva</button>
-                        </div>
 
-                        <div class="reservation-item">
-                            <div class="reservation-img selected"></div>
-                            <div class="reservation-info">
-                                <h4>2 Matrimoniales</h4>
-                                <p><strong>Check In:</strong> 20 Marzo 2025</p>
-                                <p><strong>Duración:</strong> 3 dias</p>
-                                <p><strong>Huespedes:</strong> 4 Adultos</p>
-                                <p class="price">200 €</p>
-                            </div>
-                            <button class="cancel-btn">Cancelar Reserva</button>
-                        </div>
+                        @if ($reservas->isEmpty())
+                            <p>No tienes reservas.</p>
+                        @else
+                            @foreach ($reservas as $reserva)
+                                @component('components.reserva')
+                                    @slot('tipo', $reserva->habitacion->tipo)
+                                    <!-- Asegúrate de tener esta relación en el modelo -->
+                                    @slot('fecha_entrada', $reserva->fecha_entrada->format('d-m-Y'))
+                                    <!-- Si tienes una fecha de entrada -->
+                                    @slot('fecha_salida', $reserva->fecha_salida->format('d-m-Y'))
+                                    <!-- Si tienes una fecha de salida -->
+                                    @slot('precio', $reserva->precio)
+                                    <!-- Asegúrate de tener el precio disponible en el modelo -->
+                                @endcomponent
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- Sección de Estancias Activas -->
+                <div class="stays-container">
+                    <div class="tabs">
+                        <span class="tab active">Estancias</span>
                     </div>
 
-                    <br>
-
-                    <!-- Sección de Estancias Activas -->
-                    <div class="stays-container">
-                        <div class="tabs">
-                            <span class="tab active">Estancias</span>
+                    <div class="stay-item">
+                        <div class="stay-img">
                         </div>
-
-                        <div class="stay-item">
-                            <div class="stay-img">
-                            </div>
-                            <div class="stay-info">
-                                <h4>Suite de Lujo</h4>
-                                <p><strong>Check In:</strong> 5 Marzo 2025</p>
-                                <p><strong>Check Out:</strong> 10 Marzo 2025</p>
-                                <p><strong>Huespedes:</strong> 2 Adultos</p>
-                                <p class="price">200 €</p>
-                            </div>
-                            <button class="details-btn">Ver Detalles</button>
+                        <div class="stay-info">
+                            <h4>Suite de Lujo</h4>
+                            <p><strong>Check In:</strong> 5 Marzo 2025</p>
+                            <p><strong>Check Out:</strong> 10 Marzo 2025</p>
+                            <p><strong>Huespedes:</strong> 2 Adultos</p>
+                            <p class="price">200 €</p>
                         </div>
+                        <button class="details-btn">Ver Detalles</button>
+                    </div>
 
-                        <div class="stay-item">
-                            <div class="stay-img"></div>
-                            <div class="stay-info">
-                                <h4>Suite de Lujo</h4>
-                                <p><strong>Check In:</strong> 5 Marzo 2025</p>
-                                <p><strong>Check Out:</strong> 10 Marzo 2025</p>
-                                <p><strong>Huespedes:</strong> 2 Adultos</p>
-                                <p class="price">200 €</p>
-                            </div>
-                            <button class="details-btn">Ver Detalles</button>
+                    <div class="stay-item">
+                        <div class="stay-img"></div>
+                        <div class="stay-info">
+                            <h4>Suite de Lujo</h4>
+                            <p><strong>Check In:</strong> 5 Marzo 2025</p>
+                            <p><strong>Check Out:</strong> 10 Marzo 2025</p>
+                            <p><strong>Huespedes:</strong> 2 Adultos</p>
+                            <p class="price">200 €</p>
                         </div>
+                        <button class="details-btn">Ver Detalles</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 @endsection

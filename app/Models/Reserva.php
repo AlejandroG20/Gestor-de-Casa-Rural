@@ -24,9 +24,8 @@ class Reserva extends Model
      */
     public function usuario()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'usuario_id');
     }
-
     /**
      * Relación con las estancias asociadas a la reserva.
      */
