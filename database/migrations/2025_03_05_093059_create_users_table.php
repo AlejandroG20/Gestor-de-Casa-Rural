@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password'); // Crea la columna 'password'
             $table->string('dni')->unique(); // Crea la columna 'dni' única
             $table->string('telefono')->unique(); // Crea la columna 'telefono' única
+            $table->boolean('is_admin')->default(false); // Agrega el campo booleano 'is_admin' con valor por defecto 'false'
             $table->timestamps(); // Crea las columnas 'created_at' y 'updated_at'
         });
     }

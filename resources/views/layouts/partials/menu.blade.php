@@ -15,7 +15,7 @@
         <!-- Menú -->
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                @if (Auth::check() && Auth::user()->tipo === 'admin')
+                @if (Auth::check() && Auth::user()->is_admin == true)
                     <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
                             href="#">Admin</a></li>
                 @endif
@@ -33,7 +33,7 @@
                 @endauth
                 @guest
                     <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
-                            href="/test-login">Iniciar Sesion</a></li>
+                            href="{{route('login')}}">Iniciar Sesion</a></li>
                 @endguest
             </ul>
         </div>

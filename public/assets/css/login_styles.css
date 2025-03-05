@@ -1,0 +1,84 @@
+/* === Estilos para el Login === */
+.login-container {
+    background-color: var(--secondary-dark);
+    padding: 40px;
+    border-radius: 8px;
+    width: 400px;
+    margin: 100px auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.login-container .form-group {
+    margin-bottom: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--tertiary-dark);
+    border: 1px solid var(--medium-text);
+    border-radius: 5px;
+    color: var(--light-text);
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: var(--gold);
+    outline: none;
+}
+
+.login-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--gold);
+    border: none;
+    border-radius: 5px;
+    color: var(--button-text);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: var(--gold-hover);
+    transform: scale(1.05);
+}
+
+.error-message {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: var(--gold);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.error-message ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.error-message ul li {
+    font-size: 14px;
+}
+
+/* Enlaces de ayuda */
+.login-container .help-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-container .help-links a {
+    color: var(--gold);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-container .help-links a:hover {
+    color: var(--gold-hover);
+}
