@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('estancias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('reserva_id')->constrained('reservas')->onDelete('cascade');
+            $table->foreignId('reserva_id');
             $table->dateTime('fecha_entrada');
             $table->dateTime('fecha_salida');
             $table->decimal('precio_total', 10, 2);

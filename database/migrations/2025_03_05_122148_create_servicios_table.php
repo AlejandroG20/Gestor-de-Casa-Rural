@@ -19,11 +19,10 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->decimal('precio', 10, 2);
             $table->boolean('disponible')->default(true);
-            $table->foreignId('estancia_id')->nullable()->constrained('estancias')->onDelete('cascade');
-            $table->foreignId('reserva_id')->nullable()->constrained('reservas')->onDelete('cascade');
+            $table->foreignId('estancia_id')->nullable();
+            $table->foreignId('reserva_id')->nullable();
             $table->timestamps();
         });
-        
     }
 
     /**

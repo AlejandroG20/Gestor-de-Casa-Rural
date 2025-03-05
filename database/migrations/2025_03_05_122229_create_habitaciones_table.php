@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('numero');
             $table->decimal('precio', 10, 2);
             $table->boolean('disponible')->default(true);
-            $table->foreignId('domotica_id')->nullable()->constrained('domoticas')->onDelete('set null');
+            $table->foreignId('domotica_id')->nullable();
             $table->timestamps();
 
             $table->index('disponible');
