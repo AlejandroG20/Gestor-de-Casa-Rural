@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* === Variables de Colores === */
+:root {
+    --primary-dark: #1e1e1e;
+    --secondary-dark: #242424;
+    --tertiary-dark: #2a2d32;
+    --gold: #d4af37;
+    --gold-hover: #b8962e;
+    --light-text: #e0e0e0;
+    --medium-text: #c0c0c0;
+    --button-bg: #c0c0c0;
+    --button-hover: #b0b0b0;
+    --button-text: #1f2125;
+    --footer-bg: #1f2125;
+}
+
+/* === Elementos Generales === */
+body {
+    background-color: var(--primary-dark);
+    color: var(--light-text);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* === Tipografía === */
+
+h1 {
+    font-weight: bold;
+    border-bottom: 3px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--medium-text);
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--secondary-dark);
+    padding: 15px 0;
+    border-bottom: 2px solid var(--medium-text);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+    border-radius: 10%;
+    height: 50px;
+    filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.1));
+}
+
+/* Botones del menú */
+.custom-button {
+    background: transparent;
+    color: var(--medium-text);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 18px;
+    border-radius: 25px;
+    margin: 0 6px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Efecto hover con subrayado */
+.custom-button::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background: var(--medium-text);
+    transition: width 0.3s ease-in-out;
+    margin-top: 5px;
+}
+
+.custom-button:hover::after {
+    width: 100%;
+}
+
+/* Botón de reserva */
+.reserve-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text) !important;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(192, 166, 89, 0.3);
+}
+
+/* Botón de reserva - Hover */
+.reserve-btn:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(212, 175, 103, 0.4);
+}
+
+.btn-primary {
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+    color: var(--button-text);
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #808080;
+    border-color: #808080;
+    transform: scale(1.05);
+    color: #ffffff;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--footer-bg);
+    border-top: 2px solid var(--medium-text);
+    color: var(--medium-text);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.text-silver {
+    color: var(--medium-text);
+    font-weight: bold;
+}
+
+.footer-link {
+    color: var(--medium-text);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.footer-border {
+    border-top: 1px solid var(--medium-text);
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* === Beneficios === */
+.benefits {
+    background-color: var(--primary-dark);
+    padding: 50px 0;
+    text-align: center;
+}
+
+.benefits .icon-style {
+    width: 60px;
+    height: 60px;
+    filter: invert(80%) sepia(40%) saturate(300%) hue-rotate(40deg) brightness(90%) contrast(90%);
+    margin-bottom: 15px;
+}

@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --background-dark: #1b1b1b;
+    --sidebar-dark: #252525;
+    --text-light: #e0e0e0;
+    --primary-color: #d4af37;
+    --primary-hover: #b8962e;
+    --border-light: rgba(255, 255, 255, 0.1);
+}
+
+/* General */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+/* Sidebar (izquierda) */
+.profile-sidebar {
+    margin-top: 5vh;
+    background: var(--sidebar-dark);
+    color: var(--text-light);
+    height: 90vh;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-right: 1px solid var(--border-light);
+    padding-top: 30px;
+}
+
+.sidebar-content {
+    text-align: center;
+}
+
+.profile-img {
+    border: 3px solid var(--primary-color);
+    padding: 5px;
+}
+
+/* Contenido principal (derecha) */
+.profile-content {
+    background: var(--background-dark);
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #d4af37;
+}
+
+.description {
+    font-size: 12px;
+    color: #b0b0b0;
+    /* Gris claro */
+    margin-top: 5px;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #fff;
+}
+
+.verification {
+    font-size: 14px;
+    color: #c0a060;
+    /* Dorado suave */
+    margin-top: 5px;
+}
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Botones */
+.btn-primary {
+    background: var(--primary-color);
+    color: #1f2125;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    color: white;
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(#c9302c);
+    color: #1e1e1e;
+}
+
+.btn-danger {
+    background: var(#c9302c);
+    color: #1f2125;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn-danger:hover {
+    background: var(#c9302c);
+    color: white;
+}
+
+.btn-outline-danger {
+    border: 1px solid var(--primary-color);
+    color: var(#c9302c);
+}
+
+.btn-outline-danger:hover {
+    background: var(#c9302c);
+    color: #1e1e1e;
+}
+
+/* Títulos */
+.section-title {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Reservas y estancias */
+.reservations-container {
+    width: 100%;
+    background: #1e1e1e;
+    /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 12px;
+    color: #e0e0e0;
+}
+
+.tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #b0b0b0;
+}
+
+.tab.active {
+    color: #d4af37;
+    /* Dorado brillante */
+    border-bottom: 3px solid #d4af37;
+}
+
+.reservation-item {
+    display: flex;
+    align-items: center;
+    background: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.reservation-img {
+    width: 60px;
+    height: 60px;
+    background: url(../img/Suite.jpg);
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.reservation-img.selected {
+    border: 2px solid #d4af37;
+    /* Destacado en dorado */
+}
+
+.reservation-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.reservation-info h4 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.reservation-info p {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin: 2px 0;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d4af37;
+}
+
+.cancel-btn {
+    background: #d9534f;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #c9302c;
+}
+
+.stays-container {
+    width: 100%;
+    background: #1e1e1e;
+    /* Fondo oscuro */
+    padding: 20px;
+    border-radius: 12px;
+    color: #e0e0e0;
+}
+
+.tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #b0b0b0;
+}
+
+.tab.active {
+    color: #d4af37;
+    border-bottom: 3px solid #d4af37;
+}
+
+.stay-item {
+    display: flex;
+    align-items: center;
+    background: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.stay-img {
+    width: 60px;
+    height: 60px;
+    background: url(../img/Suite.jpg);
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.stay-img.selected {
+    border: 2px solid #d4af37;
+    /* Destacado en dorado */
+}
+
+.stay-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.stay-info h4 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.stay-info p {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin: 2px 0;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d4af37;
+}
+
+.details-btn {
+    background: #337ab7;
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.details-btn:hover {
+    background: #286090;
+}
