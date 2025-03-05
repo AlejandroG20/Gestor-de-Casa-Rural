@@ -26,6 +26,7 @@ class Reserva extends Model
     {
         return $this->belongsTo(User::class, 'usuario_id');
     }
+
     /**
      * Relación con las estancias asociadas a la reserva.
      */
@@ -39,7 +40,8 @@ class Reserva extends Model
      */
     public function habitaciones()
     {
-        return $this->belongsToMany(Habitacion::class, 'habitacion_reserva');
+        return $this->belongsToMany(Habitacion::class, 'habitacion_reserva')
+            ->withTimestamps(); // Guarda los tiempos de creación/actualización
     }
 
     /**
@@ -47,6 +49,8 @@ class Reserva extends Model
      */
     public function servicios()
     {
-        return $this->hasMany(Servicio::class);
+        return $this->belongsToMany(Servicio::class, 'reserva_servicio')
+            ->withPivot('cantidad', 'precio') // Si hay datos adicionales en la relación
+            ->withTimestamps();
     }
 }

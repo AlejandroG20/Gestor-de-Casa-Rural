@@ -27,4 +27,5 @@ class Habitacion extends Model
     {
         return $this->belongsToMany(Reserva::class, 'habitacion_reserva');
     }
+    
 }
