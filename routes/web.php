@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth\LoginController;
 
 // Rutas de la página de inicio y otras vistas
 Route::view('/', 'home.index')->name('index');
@@ -15,6 +15,7 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 Route::view('home.casa', 'home.casa')->name('casa');
 Route::view('auth.cuenta', 'auth.cuenta')->name('cuenta');
 Route::view('admin.admin', 'admin.admin')->name('admin');
+Route::view('auth.register', 'auth.register')->name('register');
 
 // Ruta de Login (usando el controlador)
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

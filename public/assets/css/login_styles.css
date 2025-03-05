@@ -1,4 +1,4 @@
-/* === Estilos para el Login === */
+/* === Estilos para el Login / Registro === */
 .login-container {
     background-color: var(--secondary-dark);
     padding: 40px;
@@ -13,6 +13,7 @@
 }
 
 .login-container input[type="text"],
+.login-container input[type="email"],
 .login-container input[type="password"] {
     width: 100%;
     padding: 12px;
@@ -25,6 +26,7 @@
 }
 
 .login-container input[type="text"]:focus,
+.login-container input[type="email"]:focus,
 .login-container input[type="password"]:focus {
     border-color: var(--gold);
     outline: none;

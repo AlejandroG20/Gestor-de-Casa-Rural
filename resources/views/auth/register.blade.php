@@ -1,11 +1,10 @@
 @extends('layouts.landing')
 
-<!-- Títulos -->
-@section('title', 'Iniciar Sesión')
+@section('title', 'Registro')
 
 @section('content')
     <div class="login-container">
-        <h2>Iniciar Sesión</h2>
+        <h2>Registro</h2>
 
         <!-- Mostrar mensajes de error -->
         @if ($errors->any())
@@ -18,28 +17,33 @@
             </div>
         @endif
 
-        <!-- Formulario de login -->
-        <form action="{{ route('login') }}" method="POST">
+        <!-- Formulario de registro -->
+        <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="form-group">
                 <input type="text" name="nombre" placeholder="Usuario" value="{{ old('nombre') }}" required>
             </div>
             <div class="form-group">
+                <input type="email" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required>
+            </div>
+            <div class="form-group">
                 <input type="password" name="password" placeholder="Contraseña" required>
             </div>
             <div class="form-group">
-                <input type="submit" value="Iniciar Sesión">
+                <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar">
             </div>
         </form>
 
-        <!-- Enlace para ir al registro -->
+        <!-- Enlace para ir al login -->
         <div class="help-links">
-            <p>¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate aquí</a></p>
+            <p>¿Ya tienes una cuenta? <a href="{{ route('login') }}">Inicia sesión aquí</a></p>
         </div>
     </div>
 @endsection
 
-<!-- Estilos -->
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/login_styles.css') }}">
 @endsection

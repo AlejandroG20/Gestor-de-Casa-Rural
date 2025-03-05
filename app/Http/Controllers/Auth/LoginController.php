@@ -31,9 +31,13 @@ class LoginController extends Controller
                 ->withInput();
         }
 
-        // Intentar iniciar sesión con las credenciales proporcionadas
-        if (Auth::attempt(['nombre' => $request->username, 'password' => $request->password])) {
-            // Redirigir al usuario a la página principal o al dashboard
+        // Intentar encontrar al usuario por 'nombre'
+        $user = \App\Models\User::where('nombre', $request->nombre)->first();
+
+        // Verificar si el usuario existe y la contraseña coincide en texto plano
+        if ($user && $user->password === $request->password) {
+            // Iniciar sesión manualmente sin hashing
+            Auth::login($user);
             return redirect()->intended('/');
         } else {
             // Si las credenciales son incorrectas, mostrar un error
