@@ -27,6 +27,12 @@
                 <input type="email" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required>
             </div>
             <div class="form-group">
+                <input type="text" name="dni" placeholder="DNI" value="{{ old('dni') }}" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="telefono" placeholder="Teléfono" value="{{ old('telefono') }}" required>
+            </div>
+            <div class="form-group">
                 <input type="password" name="password" placeholder="Contraseña" required>
             </div>
             <div class="form-group">

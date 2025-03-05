@@ -29,3 +29,9 @@ Route::post('/logout', function (Request $request) {
 
     return redirect('/'); // Redirige a la página de inicio
 })->name('logout');
+
+use App\Http\Controllers\Auth\RegisterController;
+
+// Registrarse
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
