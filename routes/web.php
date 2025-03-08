@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ReservaController;
 
 // Rutas de la página de inicio 
 Route::view('/', 'home.index')->name('index');
@@ -16,7 +18,7 @@ Route::view('rooms.matrimonio', 'rooms.matrimonio')->name('matrimonio');
 Route::view('rooms.suite', 'rooms.suite')->name('suite');
 
 //Rutas de reservas 
-Route::view('home.reservas', 'home.reservas')->name('reservas');
+Route::get('home.reservas', [ReservaController::class, 'create'])->name('reservas');
 
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
@@ -26,6 +28,7 @@ Route::get('/mi-cuenta', [
     CuentaController::class,
     'index'
 ])->middleware('auth')->name('cuenta');
+
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 
@@ -41,8 +44,6 @@ Route::post('/logout', function (Request $request) {
 
     return redirect('/'); // Redirige a la página de inicio
 })->name('logout');
-
-use App\Http\Controllers\Auth\RegisterController;
 
 // Registrarse
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');

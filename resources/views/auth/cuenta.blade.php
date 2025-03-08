@@ -48,18 +48,19 @@
                             <p>No tienes reservas.</p>
                         @else
                             @foreach ($reservas as $reserva)
-                                @component('components.reserva')
-                                    @slot('tipo', $reserva->habitacion->tipo)
-                                    <!-- Asegúrate de tener esta relación en el modelo -->
-                                    @slot('fecha_entrada', $reserva->fecha_entrada->format('d-m-Y'))
-                                    <!-- Si tienes una fecha de entrada -->
-                                    @slot('fecha_salida', $reserva->fecha_salida->format('d-m-Y'))
-                                    <!-- Si tienes una fecha de salida -->
-                                    @slot('precio', $reserva->precio)
-                                    <!-- Asegúrate de tener el precio disponible en el modelo -->
-                                @endcomponent
+                                @foreach ($reserva->habitaciones as $habitacion)
+                                    @component('components.reserva')
+                                        @slot('tipo', $habitacion->tipo)
+                                        @slot('fecha_entrada', \Carbon\Carbon::parse($reserva->fecha_inicio)->format('d-m-Y'))
+                                        @slot('fecha_salida', \Carbon\Carbon::parse($reserva->fecha_fin)->format('d-m-Y'))
+                                        @slot('precio')
+                                            {{$reserva->precio_total}} €
+                                        @endslot
+                                    @endcomponent
+                                @endforeach
                             @endforeach
                         @endif
+
                     </div>
                 </div>
 

@@ -1,0 +1,111 @@
+/* === Contenedor General del Formulario === */
+.reserva-form-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 5%;
+    background: linear-gradient(135deg, var(--primary-dark) 30%, var(--secondary-dark) 100%);
+}
+
+/* === Caja del Formulario === */
+.reserva-form-box {
+    width: 100%;
+    max-width: 800px;
+    background: var(--tertiary-dark);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--medium-text);
+    transition: all 0.3s ease-in-out;
+}
+
+/* === Título === */
+.reserva-form-box h2 {
+    text-align: center;
+    font-size: 32px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+/* === Estructura del Formulario === */
+.reserva-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* === Campos del Formulario === */
+.reserva-form label {
+    font-weight: 600;
+    color: var(--light-text);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.reserva-form input,
+.reserva-form select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: var(--secondary-dark);
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.reserva-form input:focus,
+.reserva-form select:focus {
+    border-color: var(--gold);
+    outline: none;
+    transform: scale(1.02);
+}
+
+/* === Botón de Enviar === */
+.submit-btn {
+    background: var(--gold);
+    color: var(--button-text);
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 5px 12px rgba(212, 175, 55, 0.3);
+}
+
+.submit-btn:hover {
+    background: var(--gold-hover);
+    transform: scale(1.05);
+    box-shadow: 0px 7px 18px rgba(180, 150, 46, 0.4);
+}
+
+/* === Mensajes de error === */
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* === Adaptabilidad a Pantallas Pequeñas === */
+@media (max-width: 768px) {
+    .reserva-form-box {
+        padding: 30px;
+    }
+
+    .reserva-form label {
+        font-size: 1rem;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}

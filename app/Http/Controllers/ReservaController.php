@@ -62,4 +62,10 @@ class ReservaController extends Controller
 
         return response()->json(['message' => 'Habitaciones actualizadas']);
     }
+
+    public function create()
+    {
+        $habitaciones = \App\Models\Habitacion::all(); // Obtener todas las habitaciones
+        return view('home.reservas', compact('habitaciones'));
+    }
 }

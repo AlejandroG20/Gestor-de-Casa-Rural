@@ -12,10 +12,10 @@ class CuentaController extends Controller
     {
         // Obtener el usuario autenticado
         $usuario = Auth::user();
-
+        
         // Obtener todas las reservas asociadas al usuario
-        $reservas = $usuario->reservas;
-
+        $reservas = $usuario->reservas->load('habitaciones');
+        
         // Pasar las reservas a la vista
         return view('auth.cuenta', compact('reservas'));
     }
