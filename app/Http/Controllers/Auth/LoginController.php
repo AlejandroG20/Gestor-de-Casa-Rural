@@ -9,38 +9,38 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-    // Mostrar formulario de login
+    // Muestra el formulario de inicio de sesión
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth.login'); // Retorna la vista del formulario de login
     }
 
-    // Manejar el inicio de sesión
+    // Maneja el proceso de inicio de sesión
     public function login(Request $request)
     {
-        // Validar los datos recibidos
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required|string|max:255',
-            'password' => 'required|string|min:6',
+        // Valida los datos del formulario
+        $validacion = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:255', // El campo 'nombre' es obligatorio y debe ser una cadena de máximo 255 caracteres
+            'contraseña' => 'required|string|min:6', // El campo 'contraseña' es obligatorio y debe tener al menos 6 caracteres
         ]);
 
-        // Si hay errores en la validación
-        if ($validator->fails()) {
-            return redirect()->route('login')
-                ->withErrors($validator)
-                ->withInput();
+        // Si la validación falla, redirige de vuelta al formulario con los errores
+        if ($validacion->fails()) {
+            return redirect()->route('login') // Redirige a la ruta de login
+                ->withErrors($validacion) // Devuelve los errores de validación
+                ->withInput(); // Mantiene los datos ingresados por el usuario
         }
 
-        // Intentar encontrar al usuario por 'nombre'
-        $user = \App\Models\User::where('nombre', $request->nombre)->first();
+        // Busca un usuario en la base de datos por el campo 'nombre'
+        $usuario = \App\Models\User::where('nombre', $request->nombre)->first();
 
-        // Verificar si el usuario existe y la contraseña coincide en texto plano
-        if ($user && $user->password === $request->password) {
-            // Iniciar sesión manualmente sin hashing
-            Auth::login($user);
-            return redirect()->intended('/');
+        // Verifica si el usuario existe y si la contraseña coincide en texto plano
+        if ($usuario && $usuario->contraseña === $request->contraseña) {
+            // Inicia sesión manualmente sin hashing (esto no es seguro y debe corregirse)
+            Auth::login($usuario);
+            return redirect()->intended('/'); // Redirige al usuario a la página principal o a donde intentó acceder antes
         } else {
-            // Si las credenciales son incorrectas, mostrar un error
+            // Si las credenciales son incorrectas, redirige al login con un mensaje de error
             return redirect()->route('login')->withErrors(['error' => 'Las credenciales no son válidas.']);
         }
     }
