@@ -19,9 +19,9 @@ return new class extends Migration
         // Crea la tabla 'habitaciones' con las siguientes columnas
         Schema::create('habitaciones', function (Blueprint $table) {
             $table->id(); // Crea la columna 'id' autoincremental como clave primaria
-            $table->integer('numero'); // Crea la columna 'numero' para el número de habitación
-            $table->string('tipo'); // Crea la columna 'tipo' para el tipo de habitación (por ejemplo, estándar, suite)
-            $table->decimal('precio_noche', 10, 2); // Crea la columna 'precio_noche' para el precio por noche con 2 decimales
+            $table->integer('numero')->unique(); // Hacer único el número de habitación
+            $table->enum('tipo', ['estandar', 'suite', 'doble']); // Si los tipos son predefinidos
+            $table->decimal('precio_noche', 15, 2); // Si los precios pueden ser más altos
             $table->boolean('disponible')->default(true); // Crea columna 'disponible' para consultar la disponibilidad 
             $table->timestamps(); // Crea las columnas 'created_at' y 'updated_at'
         });
