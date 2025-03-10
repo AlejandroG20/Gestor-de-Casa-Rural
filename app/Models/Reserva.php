@@ -36,4 +36,9 @@ class Reserva extends Model
             $reserva->precio_reserva = $total;
         });
     }
+
+    public function servicios()
+    {
+        return $this->belongsToMany(Servicio::class, 'reserva_servicio');
+    }
 }
