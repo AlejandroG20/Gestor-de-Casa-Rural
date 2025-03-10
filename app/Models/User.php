@@ -12,19 +12,15 @@ class User extends Authenticatable
     protected $fillable = [
         'nombre',
         'email',
-        'password',
+        'contraseña',
         'dni',
         'telefono',
         'is_admin',
     ];
 
     protected $hidden = [
-        'password',
+        'contraseña',
         'remember_token',
     ];
 
-    public function reservas()
-    {
-        return $this->hasMany(Reserva::class, 'usuario_id');
-    }
 }
