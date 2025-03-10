@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Habitacion extends Model
 {
     use HasFactory;
-
+    protected $table = 'habitaciones';  // Especifica el nombre correcto de la tabla
     protected $fillable = ['numero', 'tipo', 'precio_noche', 'disponible'];
 
     /**

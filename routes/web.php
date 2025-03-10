@@ -28,10 +28,10 @@ Route::view('auth.register', 'auth.register')->name('register');
 Route::get('auth.cuenta', [ReservaController::class, 'index'])->name('cuenta');
 
 // Ruta para crear una nueva reserva
-Route::post('/reservas', [ReservaController::class, 'store'])->middleware('auth')->name('reservas.store');
+Route::post('auth.cuenta', [ReservaController::class, 'store'])->middleware('auth')->name('reservas.store');
 
 // Ruta para cancelar una reserva
-Route::delete('/reservas/{id}', [ReservaController::class, 'cancel'])->middleware('auth')->name('reservas.cancelar');
+Route::delete('auth.cuenta/{id}', [ReservaController::class, 'cancel'])->middleware('auth')->name('reservas.cancelar');
 
 // Cerrar Sesión
 Route::post('/logout', function (Request $request) {

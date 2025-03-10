@@ -29,8 +29,8 @@ class ReservaSeeder extends Seeder
         // Asociar habitaciones a la reserva del usuario 1
         DB::table('reserva_habitacion')->insert([
             ['reserva_id' => $reserva1, 'habitacion_id' => 1],  // Reserva 1 -> Habitación 1
-            ['reserva_id' => $reserva1, 'habitacion_id' => 2],  // Reserva 1 -> Habitación 2
-            ['reserva_id' => $reserva2, 'habitacion_id' => 3],  // Reserva 2 -> Habitación 3
+            ['reserva_id' => $reserva1, 'habitacion_id' => 21],  // Reserva 1 -> Habitación 2
+            ['reserva_id' => $reserva2, 'habitacion_id' => 41],  // Reserva 2 -> Habitación 3
         ]);
 
         // Asociar servicios a las reservas del usuario 1

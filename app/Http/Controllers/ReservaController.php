@@ -22,7 +22,7 @@ class ReservaController extends Controller
             ->get();
 
         // Retornar la vista con las reservas
-        return view('reservas.index', compact('reservas')); // Pasa la variable reservas a la vista
+        return view('auth.cuenta', compact('reservas')); // Pasa la variable reservas a la vista
     }
 
     /**
