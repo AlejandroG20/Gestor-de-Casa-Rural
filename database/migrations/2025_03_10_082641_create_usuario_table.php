@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuario', function (Blueprint $table) {
             $table->id(); // Crea la columna 'id' autoincremental
             $table->string('nombre'); // Crea la columna 'nombre'
             $table->string('email')->unique(); // Crea la columna 'email' única
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('usuario');
     }
 };
