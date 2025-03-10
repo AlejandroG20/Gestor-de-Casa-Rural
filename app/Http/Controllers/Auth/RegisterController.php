@@ -42,7 +42,7 @@ class RegisterController extends Controller
             'email' => $request->email, // Asigna el email ingresado
             'dni' => $request->dni, // Asigna el DNI ingresado
             'telefono' => $request->telefono, // Asigna el teléfono ingresado
-            'contraseña' => Hash::make($request->contraseña), // Hashea la contraseña antes de guardarla
+            'contraseña' => Hash::make($request->contraseña) // Hashea la contraseña antes de guardarla
         ]);
 
         // Inicia sesión automáticamente con el nuevo usuario registrado

@@ -26,16 +26,5 @@ class Usuario extends Authenticatable
         'contraseña', // Es importante que el campo contraseña esté oculto
         'remember_token',
     ];
-
-    // Asegúrate de que las contraseñas se hasheen automáticamente al crearlas o actualizarlas
-    public static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($usuario) {
-            if ($usuario->isDirty('contraseña')) {
-                $usuario->contraseña = bcrypt($usuario->contraseña);
-            }
-        });
-    }
+    
 }
