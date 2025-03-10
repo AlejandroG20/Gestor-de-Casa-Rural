@@ -22,10 +22,10 @@ class RegisterController extends Controller
     {
         // Valida los datos ingresados en el formulario
         $validacion = Validator::make($request->all(), [
-            'nombre' => 'required|string|max:255|unique:usuarios,nombre', // Cambia la tabla a 'usuarios'
-            'email' => 'required|string|email|max:255|unique:usuarios,email', // Cambia la tabla a 'usuarios'
-            'dni' => 'required|string|max:20|unique:usuarios,dni', // Cambia la tabla a 'usuarios'
-            'telefono' => 'required|string|max:20|unique:usuarios,telefono', // Cambia la tabla a 'usuarios'
+            'nombre' => 'required|string|max:255|unique:usuario,nombre', // Cambia la tabla a 'usuarios'
+            'email' => 'required|string|email|max:255|unique:usuario,email', // Cambia la tabla a 'usuarios'
+            'dni' => 'required|string|max:20|unique:usuario,dni', // Cambia la tabla a 'usuarios'
+            'telefono' => 'required|string|max:20|unique:usuario,telefono', // Cambia la tabla a 'usuarios'
             'contraseña' => 'required|string|min:6|confirmed', // Contraseña obligatoria, mínimo 6 caracteres y debe confirmarse
         ]);
 

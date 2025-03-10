@@ -25,7 +25,7 @@
                 <input type="text" name="nombre" placeholder="Usuario" value="{{ old('nombre') }}" required>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="password" name="contraseña" placeholder="Contraseña" required>
             </div>
             <div class="form-group">
                 <input type="submit" value="Iniciar Sesión">

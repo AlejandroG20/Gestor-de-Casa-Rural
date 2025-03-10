@@ -33,10 +33,10 @@
                 <input type="text" name="telefono" placeholder="Teléfono" value="{{ old('telefono') }}" required>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Contraseña" required>
+                <input type="password" name="contraseña" placeholder="Contraseña" required>
             </div>
             <div class="form-group">
-                <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" required>
+                <input type="password" name="contraseña_confirmacion" placeholder="Confirmar Contraseña" required>
             </div>
             <div class="form-group">
                 <input type="submit" value="Registrar">
