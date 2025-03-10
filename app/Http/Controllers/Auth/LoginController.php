@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash; // Asegúrate de importar el Hash
 
 class LoginController extends Controller
 {
@@ -34,9 +35,9 @@ class LoginController extends Controller
         // Busca un usuario en la base de datos por el campo 'nombre'
         $usuario = \App\Models\User::where('nombre', $request->nombre)->first();
 
-        // Verifica si el usuario existe y si la contraseña coincide en texto plano
-        if ($usuario && $usuario->contraseña === $request->contraseña) {
-            // Inicia sesión manualmente sin hashing (esto no es seguro y debe corregirse)
+        // Verifica si el usuario existe y si la contraseña es correcta usando Hash::check()
+        if ($usuario && Hash::check($request->contraseña, $usuario->contraseña)) {
+            // Inicia sesión automáticamente con el usuario autenticado
             Auth::login($usuario);
             return redirect()->intended('/'); // Redirige al usuario a la página principal o a donde intentó acceder antes
         } else {

@@ -17,13 +17,10 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
+Route::view('home.reservas', 'home.reservas')->name('reservas');
 
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
-
-// Ruta de Login (usando el controlador)
-Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('login', [LoginController::class, 'login']);
 
 // Cerrar Sesión
 Route::post('/logout', function (Request $request) {
@@ -37,3 +34,7 @@ Route::post('/logout', function (Request $request) {
 // Registrarse
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
+
+// Ruta de Login 
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
