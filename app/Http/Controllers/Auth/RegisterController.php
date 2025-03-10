@@ -10,44 +10,44 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    // Mostrar formulario de registro
+    // Muestra el formulario de registro
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth.register'); // Retorna la vista del formulario de registro
     }
 
-    // Manejar el registro
+    // Maneja el proceso de registro de un nuevo usuario
     public function register(Request $request)
     {
-        // Validar los datos recibidos
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required|string|max:255|unique:users,nombre',
-            'email' => 'required|string|email|max:255|unique:users,email',
-            'dni' => 'required|string|max:20|unique:users,dni', // Validación para DNI
-            'telefono' => 'required|string|max:20|unique:users,telefono', // Validación para Teléfono
-            'password' => 'required|string|min:6|confirmed',
+        // Valida los datos ingresados en el formulario
+        $validacion = Validator::make($request->all(), [
+            'nombre' => 'required|string|max:255|unique:users,nombre', // El nombre es obligatorio, de tipo string, máx. 255 caracteres y único en la tabla users
+            'email' => 'required|string|email|max:255|unique:users,email', // El email es obligatorio, debe ser un email válido y único en users
+            'dni' => 'required|string|max:20|unique:users,dni', // DNI obligatorio, tipo string, máx. 20 caracteres y único
+            'telefono' => 'required|string|max:20|unique:users,telefono', // Teléfono obligatorio, tipo string, máx. 20 caracteres y único
+            'contraseña' => 'required|string|min:6|confirmed', // Contraseña obligatoria, mínimo 6 caracteres y debe confirmarse
         ]);
 
-        // Si hay errores en la validación
-        if ($validator->fails()) {
-            return redirect()->route('register')
-                ->withErrors($validator)
-                ->withInput();
+        // Si la validación falla, redirige de vuelta con errores y datos ingresados
+        if ($validacion->fails()) {
+            return redirect()->route('register') // Redirige a la vista de registro
+                ->withErrors(provider: $validacion) // Devuelve los errores de validación
+                ->withInput(); // Mantiene los datos ingresados
         }
 
-        // Crear un nuevo usuario sin hashear la contraseña
+        // Crear un nuevo usuario sin hashear la contraseña (esto no es seguro y debe corregirse)
         $user = User::create([
-            'nombre' => $request->nombre,
-            'email' => $request->email,  // Asegúrate de pasar el email
-            'dni' => $request->dni,      // Pasar el DNI
-            'telefono' => $request->telefono,  // Pasar el teléfono
-            'password' => $request->password, // Almacena la contraseña sin hashear
+            'nombre' => $request->nombre, // Asigna el nombre ingresado
+            'email' => $request->email, // Asigna el email ingresado
+            'dni' => $request->dni, // Asigna el DNI ingresado
+            'telefono' => $request->telefono, // Asigna el teléfono ingresado
+            'contraseña' => $request->contraseña, // Almacena la contraseña sin encriptar (no recomendado)
         ]);
 
-        // Iniciar sesión automáticamente después del registro
+        // Inicia sesión automáticamente con el nuevo usuario registrado
         Auth::login($user);
 
-        // Redirigir al usuario al dashboard o página principal
+        // Redirige al usuario a la página principal o dashboard
         return redirect()->intended('/');
     }
 }
