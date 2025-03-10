@@ -6,30 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    // Crea la tabla 'usuario' con los campos necesarios
     public function up()
     {
         Schema::create('usuario', function (Blueprint $table) {
-            $table->id(); // Crea la columna 'id' autoincremental
-            $table->string('nombre'); // Crea la columna 'nombre'
-            $table->string('email')->unique(); // Crea la columna 'email' única
-            $table->string('contraseña'); // Crea la columna 'password'
-            $table->string('dni')->unique(); // Crea la columna 'dni' única
-            $table->string('telefono')->unique(); // Crea la columna 'telefono' única
-            $table->boolean('admin')->default(false); // Agrega el campo booleano 'is_admin' con valor por defecto 'false'
-            $table->timestamps(); // Crea las columnas 'created_at' y 'updated_at'
+            $table->id(); // Clave primaria autoincremental
+            $table->string('nombre'); // Nombre del usuario
+            $table->string('email')->unique(); // Email único
+            $table->string('contraseña'); // Contraseña
+            $table->string('dni')->unique(); // DNI único
+            $table->string('telefono')->unique(); // Teléfono único
+            $table->boolean('admin')->default(false); // Si es admin o no
+            $table->timestamps(); // Fechas de creación y actualización
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    // Elimina la tabla 'usuario'
     public function down()
     {
         Schema::dropIfExists('usuario');
