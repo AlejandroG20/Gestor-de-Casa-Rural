@@ -39,36 +39,5 @@ class ReservaSeeder extends Seeder
             ['reserva_id' => $reserva1, 'servicio_id' => 3],  // Reserva 1 -> Limpieza Extra
             ['reserva_id' => $reserva2, 'servicio_id' => 2],  // Reserva 2 -> Spa
         ]);
-
-        // Reservas para el usuario 3
-        $reserva3 = DB::table('reservas')->insertGetId([
-            'usuario_id' => 3,  // Usuario 3
-            'dias' => 4,
-            'precio_reserva' => 160.00,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $reserva4 = DB::table('reservas')->insertGetId([
-            'usuario_id' => 3,  // Usuario 3
-            'dias' => 5,
-            'precio_reserva' => 200.00,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Asociar habitaciones a las reservas del usuario 3
-        DB::table('reserva_habitacion')->insert([
-            ['reserva_id' => $reserva3, 'habitacion_id' => 4],  // Reserva 3 -> Habitación 4
-            ['reserva_id' => $reserva3, 'habitacion_id' => 5],  // Reserva 3 -> Habitación 5
-            ['reserva_id' => $reserva4, 'habitacion_id' => 6],  // Reserva 4 -> Habitación 6
-        ]);
-
-        // Asociar servicios a las reservas del usuario 3
-        DB::table('reserva_servicio')->insert([
-            ['reserva_id' => $reserva3, 'servicio_id' => 4],  // Reserva 3 -> Cama Adicional
-            ['reserva_id' => $reserva3, 'servicio_id' => 5],  // Reserva 3 -> Traslado al Aeropuerto
-            ['reserva_id' => $reserva4, 'servicio_id' => 6],  // Reserva 4 -> Cena
-        ]);
     }
 }
