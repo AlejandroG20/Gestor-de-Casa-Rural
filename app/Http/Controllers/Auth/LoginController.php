@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Usuario; // Cambia a usar el modelo Usuario
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash; // Asegúrate de importar el Hash
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -33,7 +34,7 @@ class LoginController extends Controller
         }
 
         // Busca un usuario en la base de datos por el campo 'nombre'
-        $usuario = \App\Models\User::where('nombre', $request->nombre)->first();
+        $usuario = Usuario::where('nombre', $request->nombre)->first(); // Cambia a la tabla 'usuarios'
 
         // Verifica si el usuario existe y si la contraseña es correcta usando Hash::check()
         if ($usuario && Hash::check($request->contraseña, $usuario->contraseña)) {
