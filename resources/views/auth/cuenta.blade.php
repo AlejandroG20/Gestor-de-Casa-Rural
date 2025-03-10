@@ -43,18 +43,50 @@
                             <span class="tab active">Reservas</span>
                         </div>
 
-                        {{-- @foreach ($reservas as $reserva)
-                            @foreach ($reserva->habitaciones as $habitacion)
-                                @component('components.reserva')
-                                    @slot('tipo', $habitacion->tipo)
-                                    @slot('fecha_entrada', \Carbon\Carbon::parse($reserva->fecha_inicio)->format('d-m-Y'))
-                                    @slot('fecha_salida', \Carbon\Carbon::parse($reserva->fecha_fin)->format('d-m-Y'))
-                                    @slot('precio')
-                                        {{ $reserva->precio_total }} €
-                                    @endslot
-                                @endcomponent
+                        @if ($reservas->isEmpty())
+                            <p>No tienes reservas.</p>
+                        @else
+                            @foreach ($reservas as $reserva)
+                                <div class="reservation-item">
+                                    <div class="reservation-img">
+                                        <img src="{{ $reserva->habitaciones->first()->imagen_url }}"
+                                            alt="Imagen de la habitación">
+                                    </div>
+                                    <div class="reservation-info">
+                                        <h4>{{ $reserva->habitaciones->first()->tipo }}</h4>
+                                        <p><strong>Check In:</strong>
+                                            {{ \Carbon\Carbon::parse($reserva->fecha_inicio)->format('d-m-Y') }}</p>
+                                        <p><strong>Check Out:</strong>
+                                            {{ \Carbon\Carbon::parse($reserva->fecha_fin)->format('d-m-Y') }}</p>
+                                        <p><strong>Precio Total:</strong> {{ $reserva->precio_total }} €</p>
+
+                                        <h5>Servicios:</h5>
+                                        <ul>
+                                            @foreach ($reserva->servicios as $servicio)
+                                                <li>{{ $servicio->nombre }}: {{ $servicio->precio }} €</li>
+                                            @endforeach
+                                        </ul>
+
+                                        <h5>Habitaciones:</h5>
+                                        <ul>
+                                            @foreach ($reserva->habitaciones as $habitacion)
+                                                <li>{{ $habitacion->tipo }} - {{ $habitacion->precio }} €</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    <!-- Formulario para cancelar la reserva -->
+                                    <form action="{{ route('reservas.cancelar', $reserva->id) }}" method="POST"
+                                        onsubmit="return confirm('¿Estás seguro de que quieres cancelar esta reserva?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="cancel-btn">Cancelar Reserva</button>
+                                    </form>
+                                </div>
                             @endforeach
-                        @endforeach --}}
+                        @endif
+
+
 
                     </div>
                 </div>
