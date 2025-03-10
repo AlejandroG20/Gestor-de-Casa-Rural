@@ -41,4 +41,15 @@ class Reserva extends Model
     {
         return $this->belongsToMany(Servicio::class, 'reserva_servicio');
     }
+
+    public function calcularPrecioReserva()
+    {
+        $total = 0;
+
+        foreach ($this->habitaciones as $habitacion) {
+            $total += $habitacion->precio_noche * $this->dias;
+        }
+
+        $this->update(['precio_reserva' => $total]);
+    }
 }
