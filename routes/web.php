@@ -14,6 +14,7 @@ Route::view('home.habitaciones', 'home.habitaciones')->name('habitaciones');
 Route::view('rooms.estandar', 'rooms.estandar')->name('estandar');
 Route::view('rooms.matrimonio', 'rooms.matrimonio')->name('matrimonio');
 Route::view('rooms.suite', 'rooms.suite')->name('suite');
+Route::view('auth.cuenta', 'auth.cuenta')->name('cuenta');
 
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');

@@ -77,7 +77,7 @@
                     de descanso, una escapada romántica o una aventura en contacto con la naturaleza, cada rincón de
                     este paraíso ha sido creado para ofrecerte una estancia inolvidable.
                 </p>
-                <a href="{{route('casa')}}" class="btn btn-primary">Saber más</a>
+                <a href="{{ route('casa') }}" class="btn btn-primary">Saber más</a>
             </div>
         </div>
         <hr>

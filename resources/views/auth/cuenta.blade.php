@@ -43,23 +43,18 @@
                             <span class="tab active">Reservas</span>
                         </div>
 
-
-                        @if ($reservas->isEmpty())
-                            <p>No tienes reservas.</p>
-                        @else
-                            @foreach ($reservas as $reserva)
-                                @foreach ($reserva->habitaciones as $habitacion)
-                                    @component('components.reserva')
-                                        @slot('tipo', $habitacion->tipo)
-                                        @slot('fecha_entrada', \Carbon\Carbon::parse($reserva->fecha_inicio)->format('d-m-Y'))
-                                        @slot('fecha_salida', \Carbon\Carbon::parse($reserva->fecha_fin)->format('d-m-Y'))
-                                        @slot('precio')
-                                            {{$reserva->precio_total}} €
-                                        @endslot
-                                    @endcomponent
-                                @endforeach
+                        {{-- @foreach ($reservas as $reserva)
+                            @foreach ($reserva->habitaciones as $habitacion)
+                                @component('components.reserva')
+                                    @slot('tipo', $habitacion->tipo)
+                                    @slot('fecha_entrada', \Carbon\Carbon::parse($reserva->fecha_inicio)->format('d-m-Y'))
+                                    @slot('fecha_salida', \Carbon\Carbon::parse($reserva->fecha_fin)->format('d-m-Y'))
+                                    @slot('precio')
+                                        {{ $reserva->precio_total }} €
+                                    @endslot
+                                @endcomponent
                             @endforeach
-                        @endif
+                        @endforeach --}}
 
                     </div>
                 </div>

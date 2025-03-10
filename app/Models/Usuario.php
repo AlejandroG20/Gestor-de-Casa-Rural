@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 class Usuario extends Authenticatable
 {
     use Notifiable;
+    // Definir el nombre de la tabla si es diferente
+    protected $table = 'usuario'; // Asegúrate de que coincida con el nombre de la tabla en la base de datos
 
     // Los atributos que se pueden llenar de manera masiva
     protected $fillable = [
@@ -16,7 +18,7 @@ class Usuario extends Authenticatable
         'contraseña',
         'dni',
         'telefono',
-        'is_admin', // Asegúrate de tener este campo en tu base de datos si planeas usarlo
+        'admin', // Asegúrate de tener este campo en tu base de datos si planeas usarlo
     ];
 
     // Los atributos que deben ser ocultos cuando se convierten en un array o JSON

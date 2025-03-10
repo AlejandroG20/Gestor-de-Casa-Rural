@@ -15,7 +15,7 @@
         <!-- Menú -->
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
-                @if (Auth::check() && Auth::user()->is_admin == true)
+                @if (Auth::check() && Auth::user()->admin == true)
                     <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
                             href="#">Admin</a></li>
                 @endif
