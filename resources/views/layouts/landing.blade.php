@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/landing_styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/guia_estilos.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/icons/favicon.ico') }}">
 
     @yield('styles')

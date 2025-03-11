@@ -1,32 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-:root {
-    --background-dark: #1b1b1b;
-    --sidebar-dark: #252525;
-    --text-light: #e0e0e0;
-    --primary-color: #d4af37;
-    --primary-hover: #b8962e;
-    --border-light: rgba(255, 255, 255, 0.1);
-}
-
-/* General */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-dark);
-    color: var(--text-light);
-}
-
 /* Sidebar (izquierda) */
 .profile-sidebar {
     margin-top: 5vh;
-    background: var(--sidebar-dark);
+    background: var(--secondary-dark);
     color: var(--text-light);
     height: 90vh;
     border-radius: 20px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    border-right: 1px solid var(--border-light);
     padding-top: 30px;
 }
 
@@ -35,13 +16,13 @@ body {
 }
 
 .profile-img {
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--gold);
     padding: 5px;
 }
 
 /* Contenido principal (derecha) */
 .profile-content {
-    background: var(--background-dark);
+    background: var(--primary-dark);
     padding: 40px;
     min-height: 100vh;
 }
@@ -50,13 +31,12 @@ body {
     font-size: 16px;
     font-weight: bold;
     margin-top: 15px;
-    color: #d4af37;
+    color: var(--gold);
 }
 
 .description {
     font-size: 12px;
-    color: #b0b0b0;
-    /* Gris claro */
+    color: var(--button-hover);
     margin-top: 5px;
 }
 
@@ -64,14 +44,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     margin-top: 15px;
-    color: #fff;
-}
-
-.verification {
-    font-size: 14px;
-    color: #c0a060;
-    /* Dorado suave */
-    margin-top: 5px;
+    color: var(--light-text);
 }
 
 .content-wrapper {
@@ -79,64 +52,10 @@ body {
     margin: 0 auto;
 }
 
-/* Botones */
-.btn-primary {
-    background: var(--primary-color);
-    color: #1f2125;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-    color: white;
-}
-
-.btn-outline-primary {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-.btn-outline-primary:hover {
-    background: var(#c9302c);
-    color: #1e1e1e;
-}
-
-.btn-danger {
-    background: var(#c9302c);
-    color: #1f2125;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-.btn-danger:hover {
-    background: var(#c9302c);
-    color: white;
-}
-
-.btn-outline-danger {
-    border: 1px solid var(--primary-color);
-    color: var(#c9302c);
-}
-
-.btn-outline-danger:hover {
-    background: var(#c9302c);
-    color: #1e1e1e;
-}
-
-/* Títulos */
-.section-title {
-    color: var(--primary-color);
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
 /* Reservas y estancias */
 .reservations-container {
     width: 100%;
     background: #1e1e1e;
-    /* Fondo oscuro */
     padding: 20px;
     border-radius: 12px;
     color: #e0e0e0;

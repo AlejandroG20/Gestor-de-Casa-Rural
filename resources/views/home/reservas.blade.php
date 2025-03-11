@@ -5,40 +5,33 @@
 
 @section('content')
 
-    <section class="reserva-form-container">
-        <div class="reserva-form-box">
-            <h2>Reserva tu Estancia</h2>
-            <form class="reserva-form" method="POST" action="{{ route('reservas') }}">
-                @csrf
-
-                <div>
-                    <label for="usuario_id">ID Usuario</label>
-                    <input type="number" id="usuario_id" name="usuario_id" required>
-                </div>
-
-                <div>
-                    <label for="fecha_inicio">Fecha de Inicio</label>
-                    <input type="date" id="fecha_inicio" name="fecha_inicio" required>
-                </div>
-
-                <div>
-                    <label for="fecha_fin">Fecha de Fin</label>
-                    <input type="date" id="fecha_fin" name="fecha_fin" required>
-                </div>
-
-                <div>
-                    <label for="habitaciones">Seleccionar Habitaciones</label>
-                    <select id="habitaciones" name="habitaciones[]" multiple required>
-                        @foreach ($habitaciones as $habitacion)
-                            <option value="{{ $habitacion->id }}">{{ $habitacion->nombre }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <button type="submit" class="submit-btn">Reservar Ahora</button>
-            </form>
-        </div>
-    </section>
+    <div class="form-container">
+        <h2 class="form-title">Reserva tu Estancia</h2>
+        <form action="#" method="POST">
+            <div class="mb-3">
+                <label for="checkin" class="form-label">Fecha de Check-in</label>
+                <input type="date" id="checkin" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="checkout" class="form-label">Fecha de Check-out</label>
+                <input type="date" id="checkout" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="guests" class="form-label">Número de huéspedes</label>
+                <input type="number" id="guests" class="form-control" min="1" required>
+            </div>
+            <div class="mb-3">
+                <label for="services" class="form-label">Servicios Adicionales</label>
+                <select id="services" class="form-control">
+                    <option value="">Ninguno</option>
+                    <option value="desayuno">Desayuno</option>
+                    <option value="spa">Acceso al Spa</option>
+                    <option value="limpieza">Limpieza Extra</option>
+                </select>
+            </div>
+            <button type="submit" class="button">Reservar Ahora</button>
+        </form>
+    </div>
 
 @endsection
 

@@ -106,8 +106,7 @@
                     televisión, baño privado y climatización.
                 </p>
 
-                <button class="more-info-btn" onclick="window.location.href='{{ route('habitaciones') }}'">MÁS
-                    INFORMACIÓN</button>
+                <button class="btn btn-primary" onclick="window.location.href='{{ route('habitaciones') }}'">Más Información</button>
             </div>
         </div>
     </div>

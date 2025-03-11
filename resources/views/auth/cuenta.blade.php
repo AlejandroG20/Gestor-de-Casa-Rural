@@ -13,20 +13,16 @@
                     <img src="{{ asset('assets/icons/profile.png') }}" class="profile-img rounded-circle mb-3" width="120"
                         alt="Foto de perfil">
                     <h3 class="text-light">{{ Auth::user()->nombre }}</h3>
-                    <button class="btn btn-primary mt-3">Editar Perfil</button>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-danger mt-3">Cerrar Sesion</button>
-                    </form>
 
-                    <h4 class="section-title">Verificación de Identidad</h4>
-                    <p class="description">Esta cuenta esta verificada por completo.</p>
-
-                    <h3 class="user-name">{{ Auth::user()->nombre }}</h3>
-                    <p class="verification">
-                        ✅ Email Confirmado <br>
-                        ✅ Mobile Confirmado
-                    </p>
+                    <div class="botones">
+                        <form action="" method="POST">
+                            <button class="btn btn-primary mt-3">Editar Perfil</button>
+                        </form>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger mt-3">Cerrar Sesion</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 

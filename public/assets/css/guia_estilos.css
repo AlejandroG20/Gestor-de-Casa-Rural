@@ -1,0 +1,189 @@
+/* == VARIABLES DE COLORES == */
+:root {
+    --color-oscuro: #2c2c2c;
+    --color-dorado: #d4af37;
+    --color-dorado-claro: #f5c518;
+    --color-gris-oscuro: #1e1e1e;
+    --color-gris-claro: #e0e0e0;
+    --color-rojo: #a83232;
+    --color-rojo-claro: #d44a4a;
+}
+
+/* == BOTON PRINCIPAL == */
+.btn-primary {
+    background-color: var(--color-oscuro);
+    color: var(--color-dorado);
+    border: 2px solid var(--color-dorado);
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-oscuro);
+    border: 2px solid var(--color-dorado);
+}
+
+.btn-primary:active {
+    background-color: var(--color-dorado); 
+    color: var(--color-oscuro); 
+    border-color: var(--color-dorado);
+    box-shadow: none; 
+}
+
+.btn-primary:focus {
+    outline: none; 
+    box-shadow: none !important; 
+}
+
+.btn-primary:focus, .btn-primary:active {
+    background-color: var(--color-dorado) !important;
+    color: var(--color-oscuro) !important;
+    border-color: var(--color-dorado) !important;
+}
+
+
+/* == BOTÓN SECUNDARIO == */
+.btn-secondary {
+    background: linear-gradient(145deg, var(--color-gris-oscuro), #2e2e2e);
+    color: var(--color-dorado-claro);
+    border: 1px solid transparent;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--color-dorado);
+    color: var(--color-oscuro);
+    box-shadow: 0 4px 8px rgba(255, 223, 0, 0.6);
+}
+
+.btn-secondary:active {
+    background: var(--color-dorado-claro);
+    color: var(--color-oscuro);
+}
+
+/* == BOTÓN DE ACCIÓN == */
+.btn-action {
+    background-color: transparent;
+    border: 2px solid var(--color-dorado);
+    color: var(--color-dorado);
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    background-color: var(--color-dorado);
+    color: var(--color-oscuro);
+    transform: scale(1.05);
+}
+
+.btn-action:active {
+    background-color: var(--color-dorado-claro);
+    color: var(--color-oscuro);
+    border-color: var(--color-dorado-claro);
+}
+
+/* == BOTÓN DANGER == */
+.btn-danger {
+    background-color: var(--color-rojo);
+    color: #fff;
+    border: 2px solid var(--color-rojo-claro);
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+    background-color: var(--color-rojo-claro);
+    color: #fff;
+    border-color: var(--color-rojo-claro);
+}
+
+.btn-danger:active {
+    background-color: #ff5c5c;
+    color: #fff;
+    border-color: #ff7b7b;
+}
+
+/* == ESTILOS DE TEXTO == */
+
+h1 {
+    font-weight: bold;
+    border-bottom: 3px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-bottom: 4px;
+    margin-bottom: 15px;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #c0c0c0;
+    text-transform: uppercase;
+    border-bottom: 2px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 3px;
+    margin-bottom: 12px;
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #c0c0c0;
+    border-bottom: 1px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+}
+
+h6 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #c0c0c0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed #d4af37;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #c0c0c0;
+    line-height: 1.6;
+}
