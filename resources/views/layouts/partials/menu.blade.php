@@ -17,14 +17,14 @@
             <ul class="navbar-nav">
                 @if (Auth::check() && Auth::user()->admin == true)
                     <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
-                            href="#">Admin</a></li>
+                            href="{{route('admin')}}">Admin</a></li>
                 @endif
                 <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
                         href="{{ route('casa') }}">Casa</a></li>
                 <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
                         href="{{ route('habitaciones') }}">Habitaciones</a></li>
                 <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
-                        href="#">Servicios</a></li>
+                        href="{{route('servicios')}}">Servicios</a></li>
                 <li class="nav-item"><a style="color: var(--medium-text);" class="nav-link custom-button"
                         href="#contacto">Contacto</a></li>
                 @auth
@@ -40,7 +40,7 @@
 
         <!-- Botón de reserva -->
         <a href="{{ route('reservas') }}" class="nav-link custom-button reserve-btn">
-            <span>⮕ Reserva Ahora</span>
+            <span style="color: var(--gold)">Reserva Ahora</span>
         </a>
     </div>
 </nav>

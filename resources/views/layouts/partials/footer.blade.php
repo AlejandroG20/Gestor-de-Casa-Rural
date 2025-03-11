@@ -17,7 +17,7 @@
                 <ul class="list-unstyled">
                     <li><a href="#" class="footer-link">Facebook</a></li>
                     <li><a href="#" class="footer-link">Instagram</a></li>
-                    <li><a href="#" class="footer-link">Twitter</a></li>
+                    <li><a href="#" class="footer-link">X</a></li>
                     <li><a href="#" class="footer-link">YouTube</a></li>
                 </ul>
             </div>
@@ -34,10 +34,8 @@
             </div>
         </div>
 
-        <hr class="footer-border">
-
         <div class="text-center mt-3">
-            <p>&copy; 2025 Casa Rural. Todos los derechos reservados.</p>
+            <p><span style="color: var(--gold)">&copy; 2025 Casa Rural.</span> Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>

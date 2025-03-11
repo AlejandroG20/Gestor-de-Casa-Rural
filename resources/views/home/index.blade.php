@@ -60,7 +60,6 @@
 
     <!-- Descripción con imagen -->
     <div class="container my-5">
-        <hr>
         <div class="row align-items-center">
             <div class="col-md-6">
                 <img src="{{ asset('assets/img/Fachada.jpg') }}" class="img-fluid rounded" alt="Fachada de la casa rural">
@@ -80,7 +79,6 @@
                 <a href="{{ route('casa') }}" class="btn btn-primary">Saber más</a>
             </div>
         </div>
-        <hr>
     </div>
 
     <!-- Descanso Visual 2-->

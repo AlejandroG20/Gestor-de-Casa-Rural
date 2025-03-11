@@ -3,7 +3,7 @@
     margin-top: 5vh;
     background: var(--secondary-dark);
     color: var(--text-light);
-    height: 100vh;
+    height: 90vh;
     border-radius: 20px;
     display: flex;
     align-items: flex-start;
@@ -13,6 +13,10 @@
 
 .sidebar-content {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .profile-img {
@@ -23,6 +27,7 @@
 .botones {
     display: flex;
     width: 100%;
+    justify-content: space-evenly;
 }
 
 /* Contenido principal (derecha) */
@@ -106,7 +111,6 @@
 
 .reservation-img.selected {
     border: 2px solid #d4af37;
-    /* Destacado en dorado */
 }
 
 .reservation-info {
@@ -129,109 +133,4 @@
 .price {
     font-size: 16px;
     font-weight: bold;
-    color: #d4af37;
-}
-
-.cancel-btn {
-    background: #d9534f;
-    border: none;
-    padding: 8px 12px;
-    color: white;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.cancel-btn:hover {
-    background: #c9302c;
-}
-
-.stays-container {
-    width: 100%;
-    background: #1e1e1e;
-    /* Fondo oscuro */
-    padding: 20px;
-    border-radius: 12px;
-    color: #e0e0e0;
-}
-
-.tabs {
-    display: flex;
-    gap: 20px;
-    border-bottom: 2px solid #444;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.tab {
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #b0b0b0;
-}
-
-.tab.active {
-    color: #d4af37;
-    border-bottom: 3px solid #d4af37;
-}
-
-.stay-item {
-    display: flex;
-    align-items: center;
-    background: #2a2a2a;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.stay-img {
-    width: 60px;
-    height: 60px;
-    background: url(../img/Suite.jpg);
-    background-size: cover;
-    border-radius: 5px;
-}
-
-.stay-img.selected {
-    border: 2px solid #d4af37;
-    /* Destacado en dorado */
-}
-
-.stay-info {
-    flex: 1;
-    margin-left: 15px;
-}
-
-.stay-info h4 {
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-.stay-info p {
-    font-size: 14px;
-    color: #b0b0b0;
-    margin: 2px 0;
-}
-
-.price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #d4af37;
-}
-
-.details-btn {
-    background: #337ab7;
-    border: none;
-    padding: 8px 12px;
-    color: white;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.details-btn:hover {
-    background: #286090;
 }

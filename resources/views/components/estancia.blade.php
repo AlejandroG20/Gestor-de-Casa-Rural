@@ -6,5 +6,5 @@
         <p><strong>Check Out:</strong> {{ $fecha_salida }}</p>
         <p class="price">{{ $precio }}</p>
     </div>
-    <button class="btn-danger">Cancelar Reserva</button>
+    <button class="btn-secondary">Más Detalles</button>
 </div>

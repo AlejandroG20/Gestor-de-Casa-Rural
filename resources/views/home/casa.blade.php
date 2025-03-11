@@ -9,7 +9,7 @@
         <div class="hero-text">Casa Rural</div>
     </div>
 
-    <div class="container py-5">
+    <div class="container py-5" style="width: 70%; text-align:">
         <h1 class="text-center mb-4">Casa Rural</h1>
         <p class="text-justify">Tras un año de rehabilitación de un edificio prácticamente en ruinas, cuya parte más antigua
             data del siglo XVI, logramos recuperar su esencia conservando elementos emblemáticos. Entre ellos, destacan el
@@ -19,14 +19,12 @@
     </div>
 
     <!-- Descanso Visual 1-->
-    <hr>
     @component('components.benefits')
     @endcomponent
-    <hr>
 
     <div class="container">
         <div class="row section align-items-center">
-            <div class="col-md-6 text-content">
+            <div class="col-md-6 text-content" style="text-align: right">
                 <h2>Dos plantas comunicadas</h2>
                 <p>El hotel está diseñado en dos niveles conectados por cómodas escaleras de madera. En la planta baja se
                     encuentra la recepción, junto con un amplio salón de descanso y una zona de estar con chimenea. En la
@@ -40,7 +38,7 @@
         </div>
 
         <div class="row section align-items-center flex-md-row-reverse">
-            <div class="col-md-6 text-content">
+            <div class="col-md-6 text-content" style="text-align: left">
                 <h2>Habitaciones exteriores</h2>
                 <p>Las habitaciones del hotel están diseñadas para ofrecer una experiencia de confort y tranquilidad. La
                     mayoría de ellas tienen vistas a la galería exterior o al jardín, permitiendo la entrada de luz natural
@@ -54,7 +52,7 @@
         </div>
 
         <div class="row section align-items-center">
-            <div class="col-md-6 text-content">
+            <div class="col-md-6 text-content" style="text-align: right">
                 <h2>Espacios para disfrutar</h2>
                 <p>El hotel dispone de varias zonas comunes donde los huéspedes pueden relajarse y disfrutar de su estancia.
                     Entre ellas, se encuentra un salón con chimenea, ideal para leer o compartir momentos en un ambiente
@@ -68,7 +66,7 @@
         </div>
 
         <div class="row section align-items-center flex-md-row-reverse">
-            <div class="col-md-6 text-content">
+            <div class="col-md-6 text-content" style="text-align: left">
                 <h2>Jardín</h3>
                     <p>El jardín del hotel es un espacio diseñado para conectar con la naturaleza y relajarse en un entorno
                         sereno. Cuenta con diversas áreas de descanso con bancos de madera y caminos rodeados de flores y

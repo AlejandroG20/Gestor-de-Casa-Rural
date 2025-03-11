@@ -19,7 +19,7 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
 Route::view('home.reservas', 'home.reservas')->name('reservas');
-
+Route::view('home.servicios','home.servicios')->name('servicios');
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 

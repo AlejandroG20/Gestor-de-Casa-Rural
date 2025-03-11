@@ -14,8 +14,6 @@
     
     </div>
 
-    <hr>
-
     <div class="container room-section">
         <div class="row justify-content-center g-4">
             <!-- Habitación 1 -->
@@ -58,7 +56,6 @@
         </div>
     </div>
 
-    <hr>
     @component('components.benefits')
     @endcomponent
 
