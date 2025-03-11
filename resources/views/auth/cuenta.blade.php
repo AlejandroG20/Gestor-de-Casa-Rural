@@ -68,30 +68,23 @@
                         <span class="tab active">Estancias</span>
                     </div>
 
-                    <div class="stay-item">
-                        <div class="stay-img">
-                        </div>
-                        <div class="stay-info">
-                            <h4>Suite de Lujo</h4>
-                            <p><strong>Check In:</strong> 5 Marzo 2025</p>
-                            <p><strong>Check Out:</strong> 10 Marzo 2025</p>
-                            <p><strong>Huespedes:</strong> 2 Adultos</p>
-                            <p class="price">200 €</p>
-                        </div>
-                        <button class="details-btn">Ver Detalles</button>
-                    </div>
+                    @if ($reservas->isEmpty())
+                        <p>No tienes reservas.</p>
+                    @else
+                        @foreach ($reservas as $reserva)
+                            @foreach ($reserva->habitaciones as $habitacion)
+                                @component('components.reserva')
+                                    @slot('tipo', $habitacion->tipo)
+                                    @slot('fecha_entrada', \Carbon\Carbon::parse($reserva->fecha_inicio)->format('d-m-Y'))
+                                    @slot('fecha_salida', \Carbon\Carbon::parse($reserva->fecha_fin)->format('d-m-Y'))
+                                    @slot('precio')
+                                        {{ $reserva->precio_reserva }} €
+                                    @endslot
+                                @endcomponent
+                            @endforeach
+                        @endforeach
+                    @endif
 
-                    <div class="stay-item">
-                        <div class="stay-img"></div>
-                        <div class="stay-info">
-                            <h4>Suite de Lujo</h4>
-                            <p><strong>Check In:</strong> 5 Marzo 2025</p>
-                            <p><strong>Check Out:</strong> 10 Marzo 2025</p>
-                            <p><strong>Huespedes:</strong> 2 Adultos</p>
-                            <p class="price">200 €</p>
-                        </div>
-                        <button class="details-btn">Ver Detalles</button>
-                    </div>
                 </div>
             </div>
         </div>
