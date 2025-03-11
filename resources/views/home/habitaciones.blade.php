@@ -18,18 +18,19 @@
                 <input type="date" class="form-control" placeholder="Salida">
             </div>
             <div class="reservation-box">
-                <span>👤</span>
+                <span>🏠</span>
                 <select class="form-select">
-                    <option>1 hab. 2 adultos</option>
-                    <option>1 hab. 1 adulto</option>
-                    <option>2 hab. 4 adultos</option>
+                    <option>Suite</option>
+                    <option>Doble</option>
+                    <option>Estandar</option>
                 </select>
             </div>
             <div class="reservation-box">
                 <span>🔒</span>
-                <input type="text" class="form-control" placeholder="Código Promocional">
+                <input type="text" class="form-control" disabled placeholder="Precio Estimado">
             </div>
-            <button class="reserva-btn">RESERVAR</button>
+
+            <button class="btn-secondary" style="margin-left: 15px;">Reservar</button>
         </div>
     </div>
 
@@ -42,7 +43,7 @@
                 @slot('titulo', 'Estandar')
 
                 @slot('ruta')
-                    <a href="{{ route(name: 'estandar') }}" class="reserve-btn">VER HABITACIÓN</a>
+                    <a href="{{ route(name: 'estandar') }}" class="btn-tertiary">Ver Habitación</a>
                 @endslot
 
                 @slot('foto')
@@ -55,7 +56,7 @@
                 @slot('titulo', 'Matrimonial')
 
                 @slot('ruta')
-                    <a href="{{ route('matrimonio') }}" class="reserve-btn">VER HABITACIÓN</a>
+                    <a href="{{ route('matrimonio') }}" class="btn-tertiary">Ver Habitación</a>
                 @endslot
 
                 @slot('foto')
@@ -68,7 +69,7 @@
                 @slot('titulo', 'Suite')
 
                 @slot('ruta')
-                    <a href="{{ route('suite') }}" class="reserve-btn">VER HABITACIÓN</a>
+                    <a href="{{ route('suite') }}" class="btn-tertiary">Ver Habitación</a>
                 @endslot
 
                 @slot('foto')

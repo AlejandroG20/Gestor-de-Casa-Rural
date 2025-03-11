@@ -16,7 +16,7 @@
 
                     <div class="botones">
                         <form action="" method="POST">
-                            <button class="btn btn-primary mt-3">Editar Perfil</button>
+                            <button class="btn btn-secondary mt-3">Editar Perfil</button>
                         </form>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
