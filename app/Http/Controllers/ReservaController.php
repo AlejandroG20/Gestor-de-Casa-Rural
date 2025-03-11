@@ -10,28 +10,32 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservaController extends Controller
 {
-
     /**
-     * Mostrar todas las reservas del usuario autenticado.
+     * Muestra todas las reservas del usuario autenticado.
+     *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        // Obtener todas las reservas del usuario autenticado
-        $reservas = Reserva::where('usuario_id', Auth::id()) // Usando Auth::id() en lugar de auth()->id()
-            ->with(['habitaciones', 'servicios']) // Cargar habitaciones y servicios relacionados
+        // Obtener todas las reservas del usuario autenticado con habitaciones y servicios relacionados
+        $reservas = Reserva::where('usuario_id', Auth::id())
+            ->with(['habitaciones', 'servicios'])
             ->get();
 
-        // Retornar la vista con las reservas
-        return view('auth.cuenta', compact('reservas')); // Pasa la variable reservas a la vista
+        // Retornar la vista con las reservas del usuario
+        return view('auth.cuenta', compact('reservas'));
     }
 
     /**
-     * Crear una nueva reserva
+     * Crea una nueva reserva.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        // Validar los datos del formulario
-        $request->validate([
+        // Validar los datos de la solicitud
+        $validatedData = $request->validate([
             'usuario_id' => 'required|exists:users,id',
             'dias' => 'required|integer|min:1',
             'habitaciones' => 'required|array|min:1',
@@ -40,58 +44,62 @@ class ReservaController extends Controller
             'servicios.*' => 'exists:servicios,id'
         ]);
 
-        // Crear la reserva
-        $reserva = new Reserva();
-        $reserva->usuario_id = $request->usuario_id;
-        $reserva->dias = $request->dias;
-        $reserva->precio_reserva = 0; // Se calculará más adelante
-        $reserva->save();
+        // Crear una nueva reserva con los datos validados
+        $reserva = Reserva::create([
+            'usuario_id' => $validatedData['usuario_id'],
+            'dias' => $validatedData['dias'],
+            'precio_reserva' => 0 // Se calculará posteriormente
+        ]);
 
-        // Asignar habitaciones y calcular precio total
+        // Calcular el precio total y asignar habitaciones
         $precio_total = 0;
-        foreach ($request->habitaciones as $habitacion_id) {
-            $habitacion = Habitacion::findOrFail($habitacion_id); // Obtener la habitación
-            $precio_total += $habitacion->precio_noche * $request->dias; // Calcular el precio total
-            $reserva->habitaciones()->attach($habitacion_id); // Asignar habitación a la reserva
+        $habitaciones = Habitacion::whereIn('id', $validatedData['habitaciones'])->get();
+
+        foreach ($habitaciones as $habitacion) {
+            $precio_total += $habitacion->precio_noche * $validatedData['dias'];
+            $reserva->habitaciones()->attach($habitacion->id);
             $habitacion->ocupar(); // Marcar la habitación como ocupada
         }
 
-        // Asignar servicios y sumar su precio
-        if ($request->has('servicios')) {
-            foreach ($request->servicios as $servicio_id) {
-                $servicio = Servicio::findOrFail($servicio_id); // Obtener el servicio
-                $precio_total += $servicio->precio; // Sumar el precio del servicio
-                $reserva->servicios()->attach($servicio_id); // Asignar servicio a la reserva
+        // Asignar servicios y calcular el precio adicional
+        if (!empty($validatedData['servicios'])) {
+            $servicios = Servicio::whereIn('id', $validatedData['servicios'])->get();
+
+            foreach ($servicios as $servicio) {
+                $precio_total += $servicio->precio;
+                $reserva->servicios()->attach($servicio->id);
             }
         }
 
-        // Actualizar el precio de la reserva
-        $reserva->precio_reserva = $precio_total;
-        $reserva->save();
+        // Actualizar el precio total de la reserva
+        $reserva->update(['precio_reserva' => $precio_total]);
 
-        // Retornar un mensaje de éxito
+        // Retornar respuesta JSON con éxito
         return response()->json(['message' => 'Reserva creada exitosamente', 'reserva' => $reserva]);
     }
 
     /**
-     * Cancelar una reserva.
+     * Cancela una reserva existente.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function cancel($id)
     {
-        // Encontrar la reserva
+        // Buscar la reserva por ID o lanzar error 404
         $reserva = Reserva::findOrFail($id);
 
-        // Verificar si el usuario tiene permiso para cancelar la reserva
+        // Verificar que el usuario autenticado sea el dueño de la reserva
         if ($reserva->usuario_id !== Auth::id()) {
             return response()->json(['message' => 'No tienes permiso para cancelar esta reserva.'], 403);
         }
 
-        // Cancelar la reserva
+        // Liberar habitaciones asociadas
         foreach ($reserva->habitaciones as $habitacion) {
-            $habitacion->liberar(); // Liberar la habitación
+            $habitacion->liberar();
         }
 
-        // Eliminar las relaciones con las habitaciones y los servicios
+        // Eliminar relaciones con habitaciones y servicios
         $reserva->habitaciones()->detach();
         $reserva->servicios()->detach();
 
