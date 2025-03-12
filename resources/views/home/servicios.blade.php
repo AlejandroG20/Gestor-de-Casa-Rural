@@ -17,18 +17,22 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            @foreach ($servicios as $servicio)
-                <div class="card">
-                    <img src="{{ asset('assets/img/' . $servicio->imagen) }}" alt="{{ $servicio->nombre }}">
-                    <div class="card-body">
-                        <h4>{{ $servicio->nombre }}</h4>
-                        <p>Precio: €{{ number_format($servicio->precio, 2) }}</p>
+        <div class="row" style="justify-content: space-evenly;">
+            @foreach ($servicios as $index => $servicio)
+                <div class="carta" style="padding: 20px; {{ $index % 2 == 0 ? 'margin-top: -15px;' : '' }}">
+                    <div class="carta-img">
+                        <img src="{{ asset('assets/img/' . strtolower($servicio->nombre) . '2.jpg') }}" alt="{{ $servicio->nombre }}">
+                        <div class="overlay">
+                            <h4>{{ $servicio->nombre }}</h4>
+                            <p>Precio: €{{ number_format($servicio->precio, 2) }}</p>
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
+      
+    
 @endsection
 
 <!-- Estilos -->
