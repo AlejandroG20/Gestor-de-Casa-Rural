@@ -32,7 +32,8 @@
 
             <!-- Reservas / Estancias -->
             <div class="col-md-9 reservas_estancias">
-                <h1 style="border: none; color: var(--gold); margin-bottom: 40px;">Bienvenido, <span style="color: var(--light-text);">{{ Auth::user()->nombre }}</span></h1>
+                <h1 style="border: none; color: var(--gold); margin-bottom: 40px;">Bienvenido, <span
+                        style="color: var(--light-text);">{{ Auth::user()->nombre }}</span></h1>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -46,7 +47,7 @@
                                     @endslot
 
                                     @slot('fecha_entrada')
-                                        hoy
+                                        {{ $reserva->fecha_entrada }} / {{ $reserva->fecha_salida }}
                                     @endslot
 
                                     @slot('dias_totales')
@@ -63,7 +64,7 @@
                         <div class="col-md-6">
                             <!-- Estancias -->
                             <h4>Estas son tus estancias</h4>
-                           
+
                         </div>
                     </div>
                 </div>

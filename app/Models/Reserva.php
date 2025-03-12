@@ -80,4 +80,15 @@ class Reserva extends Model
 
         $this->update(['precio_reserva' => $total]);
     }
+
+    // Definir el mutador para formatear las fechas
+    public function getFechaEntradaAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getFechaSalidaAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 }

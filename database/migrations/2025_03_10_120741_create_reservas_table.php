@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->id(); // ID autoincremental como clave primaria
             $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade'); // Relación con la tabla 'users'
-            $table->integer('dias'); // Cantidad de días de la reserva
+            $table->integer('dias')->default(0); // Cantidad de días de la reserva
             $table->date('fecha_salida');  // Fecha fin de la reserva
             $table->date('fecha_entrada');  // Fecha inicio de la reserva
             $table->decimal('precio_reserva', 15, 2); // Precio total de la reserva
