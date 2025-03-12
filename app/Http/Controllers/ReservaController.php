@@ -116,4 +116,12 @@ class ReservaController extends Controller
 
         return view('reservas.index', compact('reservas'));
     }
+
+    public function create()
+    {
+        $habitaciones = Habitacion::all();
+        $servicios = Servicio::all();
+
+        return view('reservas.create', compact('habitaciones', 'servicios'));
+    }
 }

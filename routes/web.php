@@ -20,7 +20,6 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
-Route::view('home.reservas', 'home.reservas')->name('reservas');
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 Route::get('home.servicios', [ServicioController::class, 'index'])->name('servicios');
@@ -54,3 +53,13 @@ Route::post('login', [LoginController::class, 'login']);
 
 Route::get('/habitaciones', [PrecioEstimadoController::class, 'showForm']);
 Route::post('/calculate-price', [PrecioEstimadoController::class, 'calculatePrice'])->name('calculate-price');
+
+Route::get('home.reservas', function () {
+    // Asegúrate de que se pasen las habitaciones y servicios a la vista
+    return view('home.reservas', [
+        'habitaciones' => App\Models\Habitacion::all(), // Pasa todas las habitaciones
+        'servicios' => App\Models\Servicio::all() // Pasa todos los servicios
+    ]);
+})->middleware('auth');
+
+Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas');

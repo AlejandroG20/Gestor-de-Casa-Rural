@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class Reserva extends Model
 {
@@ -92,5 +94,26 @@ class Reserva extends Model
     public function getFechaSalidaAttribute($value)
     {
         return Carbon::parse($value)->format('Y-m-d');
+    }
+    public function store(Request $request)
+    {
+        // Valida los datos del formulario
+        $validatedData = $request->validate([
+            'habitaciones' => 'required|array',
+            'fecha_entrada' => 'required|date',
+            'fecha_salida' => 'required|date',
+        ]);
+
+        // Crea una nueva reserva o estancia con el usuario autenticado
+        $reserva = new Reserva();
+        $reserva->usuario_id = Auth::id(); // Asigna el ID del usuario autenticado
+        $reserva->fecha_entrada = $request->fecha_entrada;
+        $reserva->fecha_salida = $request->fecha_salida;
+        $reserva->save();
+
+        // Asocia las habitaciones seleccionadas con la reserva
+        $reserva->habitaciones()->attach($request->habitaciones);
+
+        return redirect()->route('reservas.index')->with('success', 'Reserva creada con éxito!');
     }
 }
