@@ -2,15 +2,20 @@
     <div class="col-md-4">
         <!-- Imagen de la reserva (opcional) -->
         <div class="reservation-img">
-            {{$img}}
+            {{ $img }}
         </div>
     </div>
     <div class="col-md-8">
         <div class="reservation-info">
-            <h5 class="text-uppercase">{{ $fecha_entrada }}</h5>
-            <p><strong>Días de Estancia:</strong> {{ $dias_totales }} días</p>
-            <p style="text-align: right"><strong>{{ $precio }} €</strong></p>
+            <p><strong>Entrada:</strong> {{ $entrada }} </p>
+            <p><strong>Salida:</strong> {{ $salida }} </p>
+            <p><strong>{{ $precio }} €</strong></p>
         </div>
-        <button class="btn btn-danger mt-2">Cancelar Reserva</button>
     </div>
+
+    <div style="display: flex; justify-content: space-between;">
+        <button style="width: 45%; font-size: 12px" class="btn btn-secondary mt-2">Más Información</button>
+        <button style="width: 45%; font-size: 12px" class="btn btn-danger mt-2">Cancelar Reserva</button>
+    </div>
+
 </div>

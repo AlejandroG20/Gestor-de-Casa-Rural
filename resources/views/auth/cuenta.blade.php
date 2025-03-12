@@ -40,30 +40,67 @@
                             <!-- Reservas -->
                             <h4>Estas son tus reservas</h4>
 
-                            @foreach ($reservas as $reserva)
-                                @component('components.reserva')
-                                    @slot('img')
-                                        <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded" alt="Suite">
-                                    @endslot
+                            @if ($reservas->isNotEmpty())
+                                @foreach ($reservas as $reserva)
+                                    @component('components.reserva')
+                                        @slot('img')
+                                            <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded" alt="Suite">
+                                        @endslot
 
-                                    @slot('fecha_entrada')
-                                        {{ $reserva->fecha_entrada }} / {{ $reserva->fecha_salida }}
-                                    @endslot
+                                        @slot('entrada')
+                                            {{ $reserva->fecha_entrada }}
+                                        @endslot
 
-                                    @slot('dias_totales')
-                                        {{ $reserva->dias }}
-                                    @endslot
+                                        @slot('salida')
+                                            {{ $reserva->fecha_salida }}
+                                        @endslot
 
-                                    @slot('precio')
-                                        {{ $reserva->precio_reserva }}
-                                    @endslot
-                                @endcomponent
-                            @endforeach
+                                        @slot('dias_totales')
+                                            {{ $reserva->dias }}
+                                        @endslot
+
+                                        @slot('precio')
+                                            {{ $reserva->precio_reserva }}
+                                        @endslot
+                                    @endcomponent
+                                @endforeach
+                            @else
+                                <p>No tienes reservas.</p>
+                            @endif
 
                         </div>
                         <div class="col-md-6">
                             <!-- Estancias -->
                             <h4>Estas son tus estancias</h4>
+
+
+                            @if ($reservas->isNotEmpty())
+                                @foreach ($reservas as $reserva)
+                                    @component('components.reserva')
+                                        @slot('img')
+                                            <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded" alt="Suite">
+                                        @endslot
+
+                                        @slot('entrada')
+                                            {{ $reserva->fecha_entrada }}
+                                        @endslot
+
+                                        @slot('salida')
+                                            {{ $reserva->fecha_salida }}
+                                        @endslot
+
+                                        @slot('dias_totales')
+                                            {{ $reserva->dias }}
+                                        @endslot
+
+                                        @slot('precio')
+                                            {{ $reserva->precio_reserva }}
+                                        @endslot
+                                    @endcomponent
+                                @endforeach
+                            @else
+                                <p>No tienes estancias.</p>
+                            @endif
 
                         </div>
                     </div>
