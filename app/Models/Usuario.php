@@ -26,5 +26,9 @@ class Usuario extends Authenticatable
         'contraseña', // Es importante que el campo contraseña esté oculto
         'remember_token',
     ];
-    
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
+    }
 }

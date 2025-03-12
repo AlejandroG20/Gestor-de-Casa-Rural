@@ -17,7 +17,7 @@
                 <ul class="list-unstyled">
                     <li><a href="#" class="footer-link">Facebook</a></li>
                     <li><a href="#" class="footer-link">Instagram</a></li>
-                    <li><a href="#" class="footer-link">X</a></li>
+                    <li><a href="#" class="footer-link">X (Twitter)</a></li>
                     <li><a href="#" class="footer-link">YouTube</a></li>
                 </ul>
             </div>

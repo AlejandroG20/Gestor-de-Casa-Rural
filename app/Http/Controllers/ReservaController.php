@@ -108,4 +108,17 @@ class ReservaController extends Controller
 
         return response()->json(['message' => 'Reserva cancelada correctamente.']);
     }
+
+
+    public function mostrarReservas()
+    {
+        // Obtener el usuario autenticado
+        $usuario = Auth::user();
+
+        // Obtener las reservas asociadas al usuario
+        $reservas = $usuario->reservas;
+
+        // Pasar las reservas a la vista
+        return view('nombre_de_vista', compact('reservas'));
+    }
 }

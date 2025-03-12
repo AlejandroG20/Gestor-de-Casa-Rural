@@ -1,10 +1,16 @@
-<div class="reservation-item">
-    <div class="reservation-img"></div>
-    <div class="reservation-info">
-        <h4 style="text-transform: uppercase">{{ $tipo }}</h4>
-        <p><strong>Check In:</strong> {{ $fecha_entrada }}</p>
-        <p><strong>Check Out:</strong> {{ $fecha_salida }}</p>
-        <p class="price">{{ $precio }}</p>
+<div class="row mb-3" style="margin-top: 30px; width: 80%;">
+    <div class="col-md-4">
+        <!-- Imagen de la reserva (opcional) -->
+        <div class="reservation-img">
+            {{$img}}
+        </div>
     </div>
-    <button class="btn-danger">Cancelar Reserva</button>
+    <div class="col-md-8">
+        <div class="reservation-info">
+            <h5 class="text-uppercase">{{ $fecha_entrada }}</h5>
+            <p><strong>Días de Estancia:</strong> {{ $dias_totales }} días</p>
+            <p style="text-align: right"><strong>{{ $precio }} €</strong></p>
+        </div>
+        <button class="btn btn-danger mt-2">Cancelar Reserva</button>
+    </div>
 </div>
