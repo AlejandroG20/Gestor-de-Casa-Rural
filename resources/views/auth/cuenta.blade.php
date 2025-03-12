@@ -42,27 +42,30 @@
 
                             @if ($reservas->isNotEmpty())
                                 @foreach ($reservas as $reserva)
-                                    @component('components.reserva')
-                                        @slot('img')
-                                            <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded" alt="Suite">
-                                        @endslot
+                                    @if ($reserva->en_estancia == false)
+                                        @component('components.reserva')
+                                            @slot('img')
+                                                <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded"
+                                                    alt="Suite">
+                                            @endslot
 
-                                        @slot('entrada')
-                                            {{ $reserva->fecha_entrada }}
-                                        @endslot
+                                            @slot('entrada')
+                                                {{ $reserva->fecha_entrada }}
+                                            @endslot
 
-                                        @slot('salida')
-                                            {{ $reserva->fecha_salida }}
-                                        @endslot
+                                            @slot('salida')
+                                                {{ $reserva->fecha_salida }}
+                                            @endslot
 
-                                        @slot('dias_totales')
-                                            {{ $reserva->dias }}
-                                        @endslot
+                                            @slot('dias_totales')
+                                                {{ $reserva->dias }}
+                                            @endslot
 
-                                        @slot('precio')
-                                            {{ $reserva->precio_reserva }}
-                                        @endslot
-                                    @endcomponent
+                                            @slot('precio')
+                                                {{ $reserva->precio_reserva }}
+                                            @endslot
+                                        @endcomponent
+                                    @endif
                                 @endforeach
                             @else
                                 <p>No tienes reservas.</p>
@@ -73,28 +76,27 @@
                             <!-- Estancias -->
                             <h4>Estas son tus estancias</h4>
 
-
-                            @if ($reservas->isNotEmpty())
-                                @foreach ($reservas as $reserva)
-                                    @component('components.reserva')
+                            @if ($estancias->isNotEmpty())
+                                @foreach ($estancias as $estancia)
+                                    @component('components.estancia')
                                         @slot('img')
                                             <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded" alt="Suite">
                                         @endslot
 
                                         @slot('entrada')
-                                            {{ $reserva->fecha_entrada }}
+                                            {{ $estancia->reserva->fecha_entrada }}
                                         @endslot
 
                                         @slot('salida')
-                                            {{ $reserva->fecha_salida }}
+                                            {{ $estancia->reserva->fecha_salida }}
                                         @endslot
 
                                         @slot('dias_totales')
-                                            {{ $reserva->dias }}
+                                            {{ $estancia->dias }}
                                         @endslot
 
                                         @slot('precio')
-                                            {{ $reserva->precio_reserva }}
+                                            {{ $estancia->precio_final }}
                                         @endslot
                                     @endcomponent
                                 @endforeach

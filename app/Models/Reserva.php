@@ -10,7 +10,7 @@ class Reserva extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['usuario_id', 'fecha_entrada', 'fecha_salida', 'precio_reserva'];
+    protected $fillable = ['usuario_id', 'fecha_entrada', 'fecha_salida', 'precio_reserva', 'en_estancia'];
 
     protected $appends = ['dias'];
 
@@ -81,14 +81,16 @@ class Reserva extends Model
         $this->update(['precio_reserva' => $total]);
     }
 
-    // Definir el mutador para formatear las fechas
+    /**
+     * Definir el mutador para formatear las fechas
+     */
     public function getFechaEntradaAttribute($value)
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        return Carbon::parse($value)->format('Y-m-d');
     }
 
     public function getFechaSalidaAttribute($value)
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        return Carbon::parse($value)->format('Y-m-d');
     }
 }

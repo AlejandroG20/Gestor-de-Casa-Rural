@@ -1,10 +1,21 @@
-<div class="reservation-item">
-    <div class="reservation-img"></div>
-    <div class="reservation-info">
-        <h4 style="text-transform: uppercase">{{ $tipo }}</h4>
-        <p><strong>Check In:</strong> {{ $fecha_entrada }}</p>
-        <p><strong>Check Out:</strong> {{ $fecha_salida }}</p>
-        <p class="price">{{ $precio }}</p>
+<div class="row mb-3" style="margin-top: 30px; width: 80%;">
+    <div class="col-md-4">
+        <!-- Imagen de la reserva (opcional) -->
+        <div class="reservation-img">
+            {{ $img }}
+        </div>
     </div>
-    <button class="btn-secondary">Más Detalles</button>
+    <div class="col-md-8">
+        <div class="reservation-info">
+            <p><strong>Entrada:</strong> {{ $entrada }} </p>
+            <p><strong>Salida:</strong> {{ $salida }} </p>
+            <p><strong>{{ $precio }} €</strong></p>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+        <button style="width: 45%; font-size: 12px" class="btn btn-secondary mt-2">Más Información</button>
+        <button style="width: 45%; font-size: 12px" class="btn btn-danger mt-2">Pagar Estancia</button>
+    </div>
+
 </div>

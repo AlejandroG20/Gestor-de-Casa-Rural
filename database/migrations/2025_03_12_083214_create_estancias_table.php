@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('estancias', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reserva_id')->constrained('reservas')->onDelete('cascade'); // Relación con la tabla 'reservas'
-            $table->foreignId('usuario_id')->constrained()->onDelete('cascade'); // Relación con el usuario
-            $table->decimal('precio_final', 15, 2); // Precio total de la estancia
+            $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade'); // Relación con la tabla 'users'
+            $table->decimal('precio_final', 15, 2)->default(0); // Precio total de la estancia
             $table->timestamps();
         });
     }

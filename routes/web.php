@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PrecioEstimadoController;
 use App\Http\Controllers\ReservaController;
 
 // Rutas de la página de inicio 
@@ -19,7 +20,7 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
 Route::view('home.reservas', 'home.reservas')->name('reservas');
-Route::view('home.servicios','home.servicios')->name('servicios');
+Route::view('home.servicios', 'home.servicios')->name('servicios');
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 
@@ -49,3 +50,6 @@ Route::post('register', [RegisterController::class, 'register']);
 // Ruta de Login 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
+
+Route::get('/habitaciones', [PrecioEstimadoController::class, 'showForm']);
+Route::post('/calculate-price', [PrecioEstimadoController::class, 'calculatePrice'])->name('calculate-price');

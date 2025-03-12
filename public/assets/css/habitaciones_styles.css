@@ -17,7 +17,7 @@
 }
 
 
-.reservation-container {
+.reservation-container form{
     background-color: var(--primary-dark);
     padding: 20px;
     display: flex;

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('fecha_salida');  // Fecha fin de la reserva
             $table->date('fecha_entrada');  // Fecha inicio de la reserva
             $table->decimal('precio_reserva', 15, 2); // Precio total de la reserva
+            $table->boolean('en_estancia')->default(false);
             $table->timestamps(); // Registra las fechas de creación y actualización
         });
     }
