@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PrecioEstimadoController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ServicioController;
 
 // Rutas de la página de inicio 
 Route::view('/', 'home.index')->name('index');
@@ -20,9 +21,9 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
 Route::view('home.reservas', 'home.reservas')->name('reservas');
-Route::view('home.servicios', 'home.servicios')->name('servicios');
 Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
+Route::get('home.servicios', [ServicioController::class, 'index'])->name('servicios');
 
 // Reservas
 // Ruta para mostrar todas las reservas del usuario

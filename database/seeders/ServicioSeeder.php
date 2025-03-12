@@ -27,15 +27,15 @@ class ServicioSeeder extends Seeder
                 'precio' => 20.00,
             ],
             [
-                'nombre' => 'Traslado al Aeropuerto',
-                'precio' => 30.00,
-            ],
-            [
                 'nombre' => 'Cena',
                 'precio' => 25.00,
             ],
             [
                 'nombre' => 'Comida',
+                'precio' => 25.00,
+            ],
+            [
+                'nombre' => 'piscina',
                 'precio' => 25.00,
             ],
         ]);

@@ -7,16 +7,12 @@ use App\Models\Servicio;
 
 class ServicioController extends Controller
 {
-    /**
-     * Listar todos los servicios disponibles.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function index()
     {
-        // Obtener todos los servicios y devolverlos en formato JSON
-        return response()->json(Servicio::all());
+        $servicios = Servicio::all();
+        return view('home.servicios', compact('servicios'));
     }
+
 
     /**
      * Crear un nuevo servicio.
