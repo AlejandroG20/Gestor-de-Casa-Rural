@@ -12,16 +12,18 @@ class ReservaSeeder extends Seeder
         // Reservas para el usuario 1
         $reserva1 = DB::table('reservas')->insertGetId([
             'usuario_id' => 1,  // Usuario 1
-            'dias' => 3,
             'precio_reserva' => 120.00,  // Precio total (puedes calcularlo según los precios de las habitaciones)
+            'fecha_salida' => '2025-04-02',  // Fecha de salida
+            'fecha_entrada' => '2025-04-08', // Fecha de entrada
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         $reserva2 = DB::table('reservas')->insertGetId([
             'usuario_id' => 1,  // Usuario 1
-            'dias' => 2,
             'precio_reserva' => 80.00,
+            'fecha_salida' => '2025-04-02',
+            'fecha_entrada' => '2025-04-08',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
