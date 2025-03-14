@@ -179,7 +179,6 @@ form {
     color: var(--gold);
 }
 
-/* 🎯 Efecto cuando el servicio está seleccionado */
 .servicio-card input:checked+.servicio-content {
     background: var(--tertiary-dark);
     color: var(--gold);
@@ -194,8 +193,8 @@ form {
 }
 
 .botones {
+    margin-top: 20px;
     width: 50%;
     display: flex;
     justify-content: space-evenly;
-
 }
