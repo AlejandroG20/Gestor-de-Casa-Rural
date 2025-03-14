@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
-use App\Models\Estancia;
 use App\Models\Habitacion;
 use App\Models\Servicio;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +27,7 @@ class ReservaController extends Controller
     {
         // Valida los datos enviados en la solicitud
         $validatedData = $request->validate([
-            'usuario_id' => 'required|exists:users,id', // Debe existir en la tabla users
-            'dias' => 'required|integer|min:1', // Número de días mínimo 1
+            'usuario_id' => 'required|exists:usuario,id', // Debe existir en la tabla usuario
             'fecha_entrada' => 'required|date', // Debe ser una fecha válida
             'fecha_salida' => 'required|date|after:fecha_entrada', // Debe ser posterior a la entrada
             'habitaciones' => 'required|array|min:1', // Debe haber al menos una habitación
@@ -38,15 +36,18 @@ class ReservaController extends Controller
             'servicios.*' => 'exists:servicios,id' // Cada servicio debe existir en la BD
         ]);
 
+        // Calcula la cantidad de días entre la fecha de entrada y salida
+        $fechaEntrada = \Carbon\Carbon::parse($validatedData['fecha_entrada']);
+        $fechaSalida = \Carbon\Carbon::parse($validatedData['fecha_salida']);
+        $dias = $fechaEntrada->diffInDays($fechaSalida);
+
         // Crea la reserva con datos iniciales
         $reserva = Reserva::create([
             'usuario_id' => $validatedData['usuario_id'],
-            'dias' => $validatedData['dias'],
+            'dias' => $dias, // Se asignan los días calculados
             'fecha_entrada' => $validatedData['fecha_entrada'],
             'fecha_salida' => $validatedData['fecha_salida'],
             'precio_reserva' => 0, // Se actualizará después de calcular el precio total
-            'dias' => $validatedData['dias'],
-            'usuario_id' => $validatedData['usuario_id'],
         ]);
 
         $precio_total = 0;
@@ -54,7 +55,7 @@ class ReservaController extends Controller
         // Busca las habitaciones seleccionadas y las asocia con la reserva
         $habitaciones = Habitacion::whereIn('id', $validatedData['habitaciones'])->get();
         foreach ($habitaciones as $habitacion) {
-            $precio_total += $habitacion->precio_noche * $validatedData['dias'];
+            $precio_total += $habitacion->precio_noche * $dias;
             $reserva->habitaciones()->attach($habitacion->id);
         }
 
@@ -76,7 +77,6 @@ class ReservaController extends Controller
             'reserva' => $reserva
         ]);
     }
-
 
     /**
      * Cancela una reserva existente.
@@ -108,7 +108,6 @@ class ReservaController extends Controller
 
         return response()->json(['message' => 'Reserva cancelada exitosamente.']);
     }
-
 
     /**
      * Muestra el formulario de creación de una nueva reserva.
