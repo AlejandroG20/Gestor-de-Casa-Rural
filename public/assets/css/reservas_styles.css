@@ -38,6 +38,16 @@ form {
     box-shadow: 0px 0px 8px rgba(212, 175, 55, 0.6);
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(80%);
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(55%) sepia(100%) saturate(500%) hue-rotate(5deg);
+    cursor: pointer;
+}
+
 .form-label h3 {
     color: var(--light-text);
     font-size: 1.2rem;
