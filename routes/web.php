@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PrecioEstimadoController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\CuentaController;
 
 // Rutas de la página de inicio 
 Route::view('/', 'home.index')->name('index');
@@ -26,13 +27,13 @@ Route::get('home.servicios', [ServicioController::class, 'index'])->name('servic
 
 // Reservas
 // Ruta para mostrar todas las reservas del usuario
-Route::get('auth.cuenta', [ReservaController::class, 'index'])->name('cuenta');
+Route::get('auth.cuenta', [CuentaController::class, 'index'])->name('cuenta');
 
 // Ruta para crear una nueva reserva
-Route::post('auth.cuenta', [ReservaController::class, 'store'])->middleware('auth')->name('reservas.store');
+Route::post('auth.cuenta', [CuentaController::class, 'store'])->middleware('auth')->name('reservas.store');
 
 // Ruta para cancelar una reserva
-Route::delete('auth.cuenta/{id}', [ReservaController::class, 'cancel'])->middleware('auth')->name('reservas.cancelar');
+Route::delete('auth.cuenta/{id}', [CuentaController::class, 'cancel'])->middleware('auth')->name('reservas.cancelar');
 
 // Cerrar Sesión
 Route::post('/logout', function (Request $request) {
@@ -54,12 +55,6 @@ Route::post('login', [LoginController::class, 'login']);
 Route::get('/habitaciones', [PrecioEstimadoController::class, 'showForm']);
 Route::post('/calculate-price', [PrecioEstimadoController::class, 'calculatePrice'])->name('calculate-price');
 
-Route::get('home.reservas', function () {
-    // Asegúrate de que se pasen las habitaciones y servicios a la vista
-    return view('home.reservas', [
-        'habitaciones' => App\Models\Habitacion::all(), // Pasa todas las habitaciones
-        'servicios' => App\Models\Servicio::all() // Pasa todos los servicios
-    ]);
-})->middleware('auth');
-
-Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas');
+//Reservas
+Route::get('home.reservas', [ReservaController::class, 'index'])->name('reservas'); // Muestra el formulario de reserva
+Route::post('home.reservas', [ReservaController::class, 'store'])->name('reservas.store'); // Procesa la reserva

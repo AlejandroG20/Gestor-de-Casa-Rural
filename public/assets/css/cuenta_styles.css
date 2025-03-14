@@ -1,14 +1,15 @@
 /* Sidebar (izquierda) */
 .profile-sidebar {
     margin-top: 5vh;
+    margin-bottom: 5vh;
     background: var(--secondary-dark);
     color: var(--text-light);
-    height: 90vh;
     border-radius: 20px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding-top: 30px;
+    min-height: 100vh;
 }
 
 .sidebar-content {
