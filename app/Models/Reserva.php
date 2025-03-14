@@ -12,9 +12,13 @@ class Reserva extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['usuario_id', 'fecha_entrada', 'fecha_salida', 'precio_reserva', 'en_estancia'];
-
-    protected $appends = ['dias'];
+    protected $fillable = [
+        'usuario_id',
+        'fecha_entrada',
+        'fecha_salida',
+        'precio_reserva',
+        'dias'
+    ];
 
     /**
      * Relación con habitaciones (muchos a muchos)
@@ -49,38 +53,6 @@ class Reserva extends Model
             return Carbon::parse($this->fecha_entrada)->diffInDays(Carbon::parse($this->fecha_salida));
         }
         return 0;
-    }
-
-    /**
-     * Evento que calcula automáticamente el precio_reserva antes de guardar
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::saving(function ($reserva) {
-            $total = 0;
-
-            foreach ($reserva->habitaciones as $habitacion) {
-                $total += $habitacion->precio_noche * $reserva->dias; // Usamos el accesor getDiasAttribute()
-            }
-
-            $reserva->precio_reserva = $total;
-        });
-    }
-
-    /**
-     * Método para recalcular y actualizar el precio de la reserva
-     */
-    public function calcularPrecioReserva()
-    {
-        $total = 0;
-
-        foreach ($this->habitaciones as $habitacion) {
-            $total += $habitacion->precio_noche * $this->dias;
-        }
-
-        $this->update(['precio_reserva' => $total]);
     }
 
     /**

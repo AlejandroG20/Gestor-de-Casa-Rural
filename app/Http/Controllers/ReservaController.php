@@ -12,7 +12,17 @@ class ReservaController extends Controller
 {
     public function index()
     {
-        $habitaciones = Habitacion::all();
+        $fechaEntrada = request('fecha_entrada');
+        $fechaSalida = request('fecha_salida');
+
+        // Filtra las habitaciones disponibles
+        $habitaciones = Habitacion::where('disponible', true)
+            ->whereDoesntHave('reservas', function ($query) use ($fechaEntrada, $fechaSalida) {
+                $query->whereBetween('fecha_entrada', [$fechaEntrada, $fechaSalida])
+                    ->orWhereBetween('fecha_salida', [$fechaEntrada, $fechaSalida]);
+            })
+            ->get();
+
         $servicios = Servicio::all();
         return view('home.reservas', compact('habitaciones', 'servicios'));
     }
@@ -30,8 +40,9 @@ class ReservaController extends Controller
             'usuario_id' => 'required|exists:usuario,id', // Debe existir en la tabla usuario
             'fecha_entrada' => 'required|date', // Debe ser una fecha válida
             'fecha_salida' => 'required|date|after:fecha_entrada', // Debe ser posterior a la entrada
-            'habitaciones' => 'required|array|min:1', // Debe haber al menos una habitación
-            'habitaciones.*' => 'exists:habitaciones,id', // Cada habitación debe existir en la BD
+            'habitaciones_estandar' => 'required|integer|min:0', // Número de habitaciones estándar
+            'habitaciones_doble' => 'required|integer|min:0', // Número de habitaciones dobles
+            'habitaciones_suite' => 'required|integer|min:0', // Número de habitaciones suite
             'servicios' => 'array', // Servicios opcionales
             'servicios.*' => 'exists:servicios,id' // Cada servicio debe existir en la BD
         ]);
@@ -39,6 +50,13 @@ class ReservaController extends Controller
         // Calcula la cantidad de días entre la fecha de entrada y salida
         $fechaEntrada = \Carbon\Carbon::parse($validatedData['fecha_entrada']);
         $fechaSalida = \Carbon\Carbon::parse($validatedData['fecha_salida']);
+
+        // Verifica que la fecha de salida no sea anterior a la de entrada
+        if ($fechaSalida <= $fechaEntrada) {
+            return response()->json(['message' => 'La fecha de salida debe ser posterior a la de entrada.'], 400);
+        }
+
+        // Calcula la diferencia en días
         $dias = $fechaEntrada->diffInDays($fechaSalida);
 
         // Crea la reserva con datos iniciales
@@ -52,11 +70,38 @@ class ReservaController extends Controller
 
         $precio_total = 0;
 
-        // Busca las habitaciones seleccionadas y las asocia con la reserva
-        $habitaciones = Habitacion::whereIn('id', $validatedData['habitaciones'])->get();
-        foreach ($habitaciones as $habitacion) {
-            $precio_total += $habitacion->precio_noche * $dias;
-            $reserva->habitaciones()->attach($habitacion->id);
+        // Busca las habitaciones disponibles (las primeras)
+        if ($validatedData['habitaciones_estandar'] > 0) {
+            $habitacionesEstandar = Habitacion::where('tipo', 'estandar')
+                ->where('disponible', true)
+                ->take($validatedData['habitaciones_estandar']) // Toma las primeras disponibles
+                ->get();
+            foreach ($habitacionesEstandar as $habitacion) {
+                $precio_total += 55 * $dias;
+                $reserva->habitaciones()->attach($habitacion->id);
+            }
+        }
+
+        if ($validatedData['habitaciones_doble'] > 0) {
+            $habitacionesDoble = Habitacion::where('tipo', 'doble')
+                ->where('disponible', true)
+                ->take($validatedData['habitaciones_doble'])
+                ->get();
+            foreach ($habitacionesDoble as $habitacion) {
+                $precio_total += 100 * $dias;
+                $reserva->habitaciones()->attach($habitacion->id);
+            }
+        }
+
+        if ($validatedData['habitaciones_suite'] > 0) {
+            $habitacionesSuite = Habitacion::where('tipo', 'suite')
+                ->where('disponible', true)
+                ->take($validatedData['habitaciones_suite'])
+                ->get();
+            foreach ($habitacionesSuite as $habitacion) {
+                $precio_total += 150 * $dias;
+                $reserva->habitaciones()->attach($habitacion->id);
+            }
         }
 
         // Si hay servicios adicionales, los añade a la reserva
@@ -77,6 +122,7 @@ class ReservaController extends Controller
             'reserva' => $reserva
         ]);
     }
+
 
     /**
      * Cancela una reserva existente.

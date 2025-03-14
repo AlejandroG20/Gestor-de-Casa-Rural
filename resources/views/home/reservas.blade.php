@@ -45,6 +45,7 @@
                 </label>
 
                 <div class="habitaciones">
+                    <!-- Habitaciones Estándar -->
                     <div class="habitacion-card p-3">
                         <div class="habitacion-img">
                             <img src="{{ asset('assets/img/Estandar.jpg') }}" alt="Habitación Estándar">
@@ -62,11 +63,11 @@
                         </div>
                         @if ($habitacionEstandar)
                             <div class="form-group habitacion-card">
-                                <label for="habitacion_estandar" class="form-label">Cantidad de Habitaciones
+                                <label for="habitaciones_estandar" class="form-label">Cantidad de Habitaciones
                                     Estándar</label>
                                 <div>
-                                    <input type="number" name="habitacion_estandar" id="habitacion_estandar" min="0"
-                                        value="0" class="form-control habitacion-input">
+                                    <input type="number" name="habitaciones_estandar" id="habitaciones_estandar"
+                                        min="0" value="0" class="form-control habitacion-input">
                                 </div>
                             </div>
                         @endif
@@ -88,9 +89,9 @@
                         </div>
                         @if ($habitacionDoble)
                             <div class="form-group habitacion-card">
-                                <label for="habitacion_doble" class="form-label">Cantidad de Habitaciones Dobles</label>
+                                <label for="habitaciones_doble" class="form-label">Cantidad de Habitaciones Dobles</label>
                                 <div>
-                                    <input type="number" name="habitacion_doble" id="habitacion_doble" min="0"
+                                    <input type="number" name="habitaciones_doble" id="habitaciones_doble" min="0"
                                         value="0" class="form-control habitacion-input">
                                 </div>
                             </div>
@@ -114,15 +115,16 @@
 
                         @if ($habitacionSuite)
                             <div class="form-group habitacion-card">
-                                <label for="habitacion_suite" class="form-label">Cantidad de Suites</label>
+                                <label for="habitaciones_suite" class="form-label">Cantidad de Suites</label>
                                 <div>
-                                    <input type="number" name="habitacion_suite" id="habitacion_suite" min="0"
+                                    <input type="number" name="habitaciones_suite" id="habitaciones_suite" min="0"
                                         value="0" class="form-control habitacion-input">
                                 </div>
                             </div>
                         @endif
                     </div>
                 </div>
+
             </div>
 
             <div class="mb-3">
