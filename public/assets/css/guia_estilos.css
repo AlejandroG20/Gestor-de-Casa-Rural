@@ -31,7 +31,6 @@
     background-color: var(--color-dorado-claro) !important;
     color: var(--color-oscuro) !important;
     border-color: var(--color-dorado-claro) !important;
-    transform: scale(0.9);
 }
 
 /* == BOTÓN SECUNDARIO == */

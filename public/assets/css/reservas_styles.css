@@ -1,48 +1,201 @@
-/* Habitaciones */
-.habitaciones-container {
+form {
+    padding: 10px;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+}
+
+.fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.fecha div {
+    width: 45%;
+}
+
+/* Estilos de los campos de fecha */
+.custom-input {
+    background-color: var(--primary-dark);
+    border: 2px solid var(--medium-text);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 1rem;
+    color: var(--light-text);
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover y enfoque en los inputs */
+.custom-input:hover,
+.custom-input:focus {
+    border-color: var(--gold);
+    background-color: var(--primary-dark);
+    color: var(--light-text);
+    box-shadow: 0px 0px 8px rgba(212, 175, 55, 0.6);
+}
+
+.form-label h3 {
+    color: var(--light-text);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.habitaciones {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
 }
 
 .habitacion-card {
-    flex: 1;
-    min-width: 250px;
-    /* Evita que sean demasiado pequeñas */
-    max-width: 300px;
-    /* Limita el tamaño de las tarjetas */
-    background: #1e1e1e;
-    /* Fondo oscuro */
-    color: white;
-    border-radius: 10px;
-    padding: 15px;
+    position: relative;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid #444;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.habitacion-card h5 {
-    margin-bottom: 10px;
-    font-size: 18px;
+.habitacion-img {
+    position: relative;
+}
+
+.habitacion-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.habitacion-info {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.habitacion-info h5 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.habitacion-info small {
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* Estilos de la etiqueta */
+.form-label {
+    color: var(--light-text);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Estilo del input */
+.habitacion-input {
+    background-color: var(--primary-dark);
+    border: 2px solid var(--medium-text);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1rem;
+    color: var(--light-text);
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.habitacion-input:hover,
+.habitacion-input:focus {
+    border-color: var(--gold);
+    background-color: var(--primary-dark);
+    color: var(--light-text);
+    box-shadow: 0px 0px 8px rgba(212, 175, 55, 0.6);
+}
+
+
+/* === Estilos para Servicios Adicionales === */
+.servicios-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.servicio-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 80px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    background: var(--primary-dark);
+    border: 2px solid var(--medium-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.servicio-card:hover {
+    background: var(--tertiary-dark);
+    transform: scale(1.03);
+}
+
+.servicio-card input {
+    display: none;
+}
+
+.servicio-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--light-text);
+    transition: all 0.3s ease;
+}
+
+.servicio-nombre {
+    font-size: 1.1rem;
+    color: var(--light-text);
+}
+
+.servicio-precio {
+    font-size: 0.9rem;
     color: var(--gold);
 }
 
-.habitacion-card .form-group {
-    margin-top: 10px;
+/* 🎯 Efecto cuando el servicio está seleccionado */
+.servicio-card input:checked+.servicio-content {
+    background: var(--tertiary-dark);
+    color: var(--gold);
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.habitacion-card input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
+.servicio-card input:checked+.servicio-content .servicio-precio {
+    background: var(--tertiary-dark);
+    color: var(--gold);
+    font-weight: bold;
 }
 
-.habitacion-card small {
-    display: block;
-    margin-top: 5px;
-    font-size: 14px;
-    color: #bbb;
+.botones {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+
 }
