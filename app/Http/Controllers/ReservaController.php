@@ -27,12 +27,6 @@ class ReservaController extends Controller
         return view('home.reservas', compact('habitaciones', 'servicios'));
     }
 
-    /**
-     * Crea una nueva reserva.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function store(Request $request)
     {
         // Valida los datos enviados en la solicitud
@@ -117,12 +111,7 @@ class ReservaController extends Controller
         $reserva->update(['precio_reserva' => $precio_total]);
 
         // Devuelve una respuesta JSON confirmando la creación de la reserva
-        return response()->json([
-            'message' => 'Reserva creada exitosamente',
-            'reserva' => $reserva,
-            'redirect' => route('reservas')
-        ]);
-        
+        return redirect()->route('cuenta')->with('message', 'Reserva creada exitosamente');
     }
 
 
@@ -156,5 +145,4 @@ class ReservaController extends Controller
 
         return response()->json(['message' => 'Reserva cancelada exitosamente.']);
     }
-
 }
