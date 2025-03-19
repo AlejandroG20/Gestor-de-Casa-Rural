@@ -9,7 +9,8 @@
     align-items: flex-start;
     justify-content: center;
     padding-top: 30px;
-    min-height: 100vh;
+    min-height: 90vh;
+    max-height: 100vh;
 }
 
 .sidebar-content {

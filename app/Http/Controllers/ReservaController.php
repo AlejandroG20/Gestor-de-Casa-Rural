@@ -119,8 +119,10 @@ class ReservaController extends Controller
         // Devuelve una respuesta JSON confirmando la creación de la reserva
         return response()->json([
             'message' => 'Reserva creada exitosamente',
-            'reserva' => $reserva
+            'reserva' => $reserva,
+            'redirect' => route('reservas')
         ]);
+        
     }
 
 
@@ -155,18 +157,4 @@ class ReservaController extends Controller
         return response()->json(['message' => 'Reserva cancelada exitosamente.']);
     }
 
-    /**
-     * Muestra el formulario de creación de una nueva reserva.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        // Obtiene todas las habitaciones y servicios disponibles
-        $habitaciones = Habitacion::all();
-        $servicios = Servicio::all();
-
-        // Retorna la vista del formulario de reserva con las habitaciones y servicios disponibles
-        return view('reservas.create', compact('habitaciones', 'servicios'));
-    }
 }

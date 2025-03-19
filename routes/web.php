@@ -25,7 +25,6 @@ Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 Route::get('home.servicios', [ServicioController::class, 'index'])->name('servicios');
 
-// Reservas
 // Ruta para mostrar todas las reservas del usuario
 Route::get('auth.cuenta', [CuentaController::class, 'index'])->name('cuenta');
 
@@ -37,11 +36,11 @@ Route::delete('auth.cuenta/{id}', [CuentaController::class, 'cancel'])->middlewa
 
 // Cerrar Sesión
 Route::post('/logout', function (Request $request) {
-    Auth::logout(); // Cierra la sesión del usuario
-    $request->session()->invalidate(); // Invalida la sesión
-    $request->session()->regenerateToken(); // Regenera el token CSRF
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-    return redirect('/'); // Redirige a la página de inicio
+    return redirect('/');
 })->name('logout');
 
 // Registrarse
@@ -56,5 +55,5 @@ Route::get('/habitaciones', [PrecioEstimadoController::class, 'showForm']);
 Route::post('/calculate-price', [PrecioEstimadoController::class, 'calculatePrice'])->name('calculate-price');
 
 //Reservas
-Route::get('home.reservas', [ReservaController::class, 'index'])->name('reservas'); // Muestra el formulario de reserva
-Route::post('home.reservas', [ReservaController::class, 'store'])->name('reservas.store'); // Procesa la reserva
+Route::get('home.reservas', [ReservaController::class, 'index'])->name('reservas');
+Route::post('home.reservas', [ReservaController::class, 'store'])->name('reservas.store');
