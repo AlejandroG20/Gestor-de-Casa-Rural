@@ -69,29 +69,16 @@ class EstanciaController extends Controller
 
         return view('estancias.show', compact('estancia'));
     }
-
-    /**
-     * Elimina una estancia.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function destroy($id)
+    public function pagar($id)
     {
         $estancia = Estancia::findOrFail($id);
 
-        // Verificar que el usuario es el dueño de la estancia
         if ($estancia->usuario_id !== Auth::id()) {
-            return response()->json(['message' => 'No tienes permiso para eliminar esta estancia.'], 403);
+            return redirect()->back()->with('error', 'No tienes permiso para pagar esta estancia.');
         }
 
-        // Eliminar relaciones
-        $estancia->habitaciones()->detach();
-        $estancia->servicios()->detach();
-
-        // Eliminar estancia
         $estancia->delete();
 
-        return response()->json(['message' => 'Estancia eliminada correctamente.']);
+        return redirect()->route('cuenta')->with('message', 'Estancia pagada exitosamente');
     }
 }

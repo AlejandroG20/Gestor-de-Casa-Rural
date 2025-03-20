@@ -109,6 +109,16 @@
                                         @slot('precio')
                                             {{ $estancia->precio_final }}
                                         @endslot
+
+                                        @slot('pagar')
+                                            <form action="{{ route('estancias.pagar', $estancia->id) }}" method="POST"
+                                                onsubmit="return confirmarPago()">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button style="font-size: 12px" type="submit" class="btn btn-danger mt-2">Pagar
+                                                    Estancia</button>
+                                            </form>
+                                        @endslot
                                     @endcomponent
                                 @endforeach
                             @else
@@ -128,4 +138,34 @@
 <!-- Estilos -->
 @section('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/cuenta_styles.css') }}">
+@endsection
+
+<!-- Scripts -->
+@section('scripts')
+    <script>
+        function confirmarPago() {
+            let tarjeta = prompt("Ingrese su número de tarjeta de crédito (13-19 dígitos):");
+
+            if (!tarjeta || tarjeta.length < 13 || tarjeta.length > 19 || isNaN(tarjeta)) {
+                alert("Número de tarjeta inválido. Intente de nuevo.");
+                return false;
+            }
+
+            let fecha = prompt("Ingrese la fecha de vencimiento (MM/AA):");
+
+            if (!fecha || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(fecha)) {
+                alert("Fecha de vencimiento inválida. Use el formato MM/AA.");
+                return false;
+            }
+
+            let csv = prompt("Ingrese el código de seguridad (CSV, 3 o 4 dígitos):");
+
+            if (!csv || !/^\d{3,4}$/.test(csv)) {
+                alert("CSV inválido. Debe tener 3 o 4 dígitos.");
+                return false;
+            }
+
+            return confirm("¿Confirmas el pago con la tarjeta terminada en " + tarjeta.slice(-4) + "?");
+        }
+    </script>
 @endsection
