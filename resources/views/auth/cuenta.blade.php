@@ -64,6 +64,16 @@
                                             @slot('precio')
                                                 {{ $reserva->precio_reserva }}
                                             @endslot
+
+                                            @slot('cancelar')
+                                                <form action="{{ route('reservas.cancelar', $reserva->id) }}" method="POST"
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button style="font-size: 12px" type="submit"
+                                                        class="btn btn-danger mt-2">Cancelar Reserva</button>
+                                                </form>
+                                            @endslot
                                         @endcomponent
                                     @endif
                                 @endforeach
@@ -80,7 +90,8 @@
                                 @foreach ($estancias as $estancia)
                                     @component('components.estancia')
                                         @slot('img')
-                                            <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded" alt="Suite">
+                                            <img src="{{ asset('assets/img/Suite.jpg') }}" class="img-fluid rounded"
+                                                alt="Suite">
                                         @endslot
 
                                         @slot('entrada')

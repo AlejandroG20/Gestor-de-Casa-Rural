@@ -45,5 +45,4 @@ class CuentaController extends Controller
         // Retorna la vista con las reservas obtenidas
         return view('home.reservas', compact('reservas'));
     }
-
 }

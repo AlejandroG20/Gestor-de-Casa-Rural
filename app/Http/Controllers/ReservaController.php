@@ -114,35 +114,22 @@ class ReservaController extends Controller
         return redirect()->route('cuenta')->with('message', 'Reserva creada exitosamente');
     }
 
-
-    /**
-     * Cancela una reserva existente.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function cancel($id)
     {
-        // Busca la reserva por ID
         $reserva = Reserva::findOrFail($id);
 
-        // Verifica si el usuario tiene permiso para cancelar la reserva
+        // Verifica si el usuario es el dueño de la reserva
         if ($reserva->usuario_id !== Auth::id()) {
-            return response()->json(['message' => 'No tienes permiso para cancelar esta reserva.'], 403);
+            return redirect()->back()->with('error', 'No tienes permiso para cancelar esta reserva.');
         }
 
-        // Libera las habitaciones asociadas a la reserva
-        foreach ($reserva->habitaciones as $habitacion) {
-            $habitacion->liberar();
-        }
-
-        // Elimina las relaciones de la reserva con las habitaciones y servicios
+        // Elimina relaciones
         $reserva->habitaciones()->detach();
         $reserva->servicios()->detach();
 
         // Elimina la reserva
         $reserva->delete();
 
-        return response()->json(['message' => 'Reserva cancelada exitosamente.']);
+        return redirect()->route('cuenta')->with('message', 'Reserva cancelada exitosamente');
     }
 }

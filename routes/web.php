@@ -57,3 +57,4 @@ Route::post('/calculate-price', [PrecioEstimadoController::class, 'calculatePric
 //Reservas
 Route::get('home.reservas', [ReservaController::class, 'index'])->name('reservas');
 Route::post('home.reservas', [ReservaController::class, 'store'])->name('reservas.store');
+Route::delete('/reservas/{id}/cancelar', [ReservaController::class, 'cancel'])->name('reservas.cancelar');
