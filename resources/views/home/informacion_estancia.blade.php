@@ -5,31 +5,31 @@
 @section('content')
 
     <div class="container detalles">
-        <h1>Detalles de la Reserva</h1>
+        <h1>Detalles de la Estancia</h1>
 
-        <!-- Información general de la reserva -->
+        <!-- Información general de la estancia -->
         <table class="table">
             <tr>
                 <th>Fecha de Entrada:</th>
-                <td>{{ $reserva->fecha_entrada }}</td>
+                <td>{{ $estancia->reserva->fecha_entrada }}</td>
             </tr>
             <tr>
                 <th>Fecha de Salida:</th>
-                <td>{{ $reserva->fecha_salida }}</td>
+                <td>{{ $estancia->reserva->fecha_salida }}</td>
             </tr>
             <tr>
                 <th>Total a Pagar:</th>
-                <td>{{ $reserva->precio_reserva }} €</td>
+                <td>{{ $estancia->precio_final }} €</td>
             </tr>
             <tr>
                 <th>Estado de la Reserva:</th>
-                <td>{{ $reserva->en_estancia ? 'En Estancia' : 'Pendiente' }}</td>
+                <td>{{ $estancia->reserva->en_estancia ? 'En Estancia' : 'Pendiente' }}</td>
             </tr>
         </table>
 
-        <!-- Habitaciones asociadas a la reserva -->
+        <!-- Habitaciones asociadas a la estancia -->
         <h3>Habitaciones Asociadas:</h3>
-        @if ($reserva->habitaciones->isNotEmpty())
+        @if ($estancia->reserva->habitaciones->isNotEmpty())
             <table class="table">
                 <thead>
                     <tr>
@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reserva->habitaciones as $habitacion)
+                    @foreach ($estancia->reserva->habitaciones as $habitacion)
                         <tr>
                             <td><strong style="text-transform: uppercase;">{{ $habitacion->tipo }}</strong></td>
                             <td>{{ $habitacion->precio_noche }} €</td>
@@ -50,9 +50,9 @@
             <p>No hay habitaciones asociadas a esta reserva.</p>
         @endif
 
-        <!-- Servicios asociados a la reserva -->
+        <!-- Servicios asociados a la estancia -->
         <h3>Servicios Adicionales:</h3>
-        @if ($reserva->servicios->isNotEmpty())
+        @if ($estancia->reserva->servicios->isNotEmpty())
             <table class="table">
                 <thead>
                     <tr>
@@ -61,7 +61,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reserva->servicios as $servicio)
+                    @foreach ($estancia->reserva->servicios as $servicio)
                         <tr>
                             <td><strong>{{ $servicio->nombre }}</strong></td>
                             <td>{{ $servicio->precio }} €</td>
@@ -76,10 +76,11 @@
         <div class="d-flex align-items-center">
             <button onclick="window.print()" class="btn btn-secondary mt-3 me-2">Imprimir Reserva</button>
 
-            <form action="{{ route('reservas.cancelar', $reserva->id) }}" method="POST">
+            <form action="{{ route('estancias.pagar', $estancia->id) }}" method="POST" onsubmit="return confirmarPago()">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger mt-3" style="line-height: 1.4;">Cancelar Reserva</button>
+                <button style="line-height: 1.4;" type="submit" class="btn btn-danger mt-3">Pagar
+                    Estancia</button>
             </form>
         </div>
 

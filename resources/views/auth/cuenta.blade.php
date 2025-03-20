@@ -19,7 +19,7 @@
                     </p>
 
                     <div class="botones">
-                        <form action="" method="POST">
+                        <form action="{{ route('perfil') }}" method="GET">
                             <button class="btn btn-secondary mt-3">Editar Perfil</button>
                         </form>
                         <form action="{{ route('logout') }}" method="POST">
@@ -109,6 +109,12 @@
 
                                         @slot('dias_totales')
                                             {{ $estancia->dias }}
+                                        @endslot
+
+                                        @slot('masInfo')
+                                            <a style="font-size: 12px"
+                                                href="{{ route('mas-info-estancia', ['id' => $estancia->id]) }}"
+                                                class="btn btn-secondary mt-2">Más Información</a>
                                         @endslot
 
                                         @slot('precio')

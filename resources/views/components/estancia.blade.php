@@ -14,7 +14,7 @@
     </div>
 
     <div style="display: flex; justify-content: space-between;">
-        <button style="width: 45%; font-size: 12px" class="btn btn-secondary mt-2">Más Información</button>
+        {{$masInfo}}
         {{$pagar}}
     </div>
 

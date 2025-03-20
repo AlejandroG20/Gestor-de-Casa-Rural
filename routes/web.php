@@ -29,12 +29,10 @@ Route::get('home.servicios', [ServicioController::class, 'index'])->name('servic
 
 // Ruta para mostrar todas las reservas del usuario
 Route::get('auth.cuenta', [CuentaController::class, 'index'])->name('cuenta');
+Route::view('auth.perfil', 'auth.perfil')->name('perfil');
 
 // Ruta para crear una nueva reserva
 Route::post('auth.cuenta', [CuentaController::class, 'store'])->middleware('auth')->name('reservas.store');
-
-// Ruta para cancelar una reserva
-Route::delete('auth.cuenta/{id}', [CuentaController::class, 'cancel'])->middleware('auth')->name('reservas.cancelar');
 
 // Cerrar Sesión
 Route::post('/logout', function (Request $request) {
@@ -53,6 +51,7 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 
+// Habitaciones
 Route::get('/habitaciones', [PrecioEstimadoController::class, 'showForm']);
 Route::post('/calculate-price', [PrecioEstimadoController::class, 'calculatePrice'])->name('calculate-price');
 
@@ -62,3 +61,4 @@ Route::post('home.reservas', [ReservaController::class, 'store'])->name('reserva
 Route::delete('/reservas/{id}/cancelar', [ReservaController::class, 'cancel'])->name('reservas.cancelar');
 Route::delete('/estancias/{id}/pagar', [EstanciaController::class, 'pagar'])->name('estancias.pagar');
 Route::get('/informacion/reserva/{id}', [InformacionController::class, 'mostrarReserva'])->name('mas-info');
+Route::get('/informacion/estancia/{id}', [InformacionController::class, 'mostrarEstancia'])->name('mas-info-estancia');

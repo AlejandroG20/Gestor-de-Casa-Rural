@@ -16,7 +16,7 @@
 }
 
 .table td {
-    background-color: var(--secondary-dark);
+    background-color: var(--tertiary-dark);
     color: var(--light-text);
 }
 
