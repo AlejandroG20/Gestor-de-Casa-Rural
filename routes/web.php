@@ -9,6 +9,7 @@ use App\Http\Controllers\PrecioEstimadoController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\EstanciaController;
 
 // Rutas de la página de inicio 
@@ -60,3 +61,4 @@ Route::get('home.reservas', [ReservaController::class, 'index'])->name('reservas
 Route::post('home.reservas', [ReservaController::class, 'store'])->name('reservas.store');
 Route::delete('/reservas/{id}/cancelar', [ReservaController::class, 'cancel'])->name('reservas.cancelar');
 Route::delete('/estancias/{id}/pagar', [EstanciaController::class, 'pagar'])->name('estancias.pagar');
+Route::get('/informacion/reserva/{id}', [InformacionController::class, 'mostrarReserva'])->name('mas-info');

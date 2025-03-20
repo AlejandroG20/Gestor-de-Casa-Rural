@@ -65,6 +65,11 @@
                                                 {{ $reserva->precio_reserva }}
                                             @endslot
 
+                                            @slot('masInfo')
+                                                <a style="font-size: 12px" href="{{ route('mas-info', ['id' => $reserva->id]) }}"
+                                                    class="btn btn-secondary mt-2">Más Información</a>
+                                            @endslot
+
                                             @slot('cancelar')
                                                 <form action="{{ route('reservas.cancelar', $reserva->id) }}" method="POST"
                                                     style="display:inline;">
