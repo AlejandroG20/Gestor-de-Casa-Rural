@@ -66,3 +66,4 @@ Route::get('/informacion/estancia/{id}', [InformacionController::class, 'mostrar
 
 //Admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin/reserva/{id}', [AdminController::class, 'verDetallesReserva'])->name('admin.reservaDetalles');

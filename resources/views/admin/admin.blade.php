@@ -18,6 +18,7 @@
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Precio</th>
+                    <th>Detalles</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,11 @@
                         <td>{{ $reserva->fecha_entrada }}</td>
                         <td>{{ $reserva->fecha_salida }}</td>
                         <td>{{ $reserva->precio_reserva }} €</td>
+                        <td>
+                            <a href="{{ route('admin.reservaDetalles', $reserva->id) }}">
+                                <button style="font-size: 12px;" class="btn btn-secondary">Ver Detalles</button>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -44,6 +50,7 @@
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Precio</th>
+                    <th>Detalles</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,6 +62,11 @@
                         <td>{{ $reserva->fecha_entrada }}</td>
                         <td>{{ $reserva->fecha_salida }}</td>
                         <td>{{ $reserva->precio_reserva }} €</td>
+                        <td>
+                            <a href="{{ route('admin.reservaDetalles', $reserva->id) }}">
+                                <button style="font-size: 12px;" class="btn btn-secondary">Ver Detalles</button>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

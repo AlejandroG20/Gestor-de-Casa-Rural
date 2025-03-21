@@ -16,4 +16,12 @@ class AdminController extends Controller
 
         return view('admin.admin', compact('reservas_activas', 'reservas_pasadas'));
     }
+
+    public function verDetallesReserva($id)
+    {
+        // Obtener la reserva específica junto con los detalles de usuario
+        $reserva = Reserva::with('usuario')->findOrFail($id);
+
+        return view('home.informacion_admin', compact('reserva'));
+    }
 }
