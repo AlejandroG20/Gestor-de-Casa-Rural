@@ -22,7 +22,7 @@ class LoginController extends Controller
     {
         // Valida los datos del formulario
         $validacion = Validator::make($request->all(), [
-            'nombre' => 'required|string|max:255', // El campo 'nombre' es obligatorio y debe ser una cadena de máximo 255 caracteres
+            'email' => 'required|string|max:255', // El campo 'nombre' es obligatorio y debe ser una cadena de máximo 255 caracteres
             'contraseña' => 'required|string|min:6', // El campo 'contraseña' es obligatorio y debe tener al menos 6 caracteres
         ]);
 
@@ -34,7 +34,7 @@ class LoginController extends Controller
         }
 
         // Busca un usuario en la base de datos por el campo 'nombre'
-        $usuario = Usuario::where('nombre', $request->nombre)->first(); // Cambia a la tabla 'usuarios'
+        $usuario = Usuario::where('email', operator: $request->email)->first(); // Cambia a la tabla 'usuarios'
 
         // Verifica si el usuario existe y si la contraseña es correcta usando Hash::check()
         if ($usuario && Hash::check($request->contraseña, $usuario->contraseña)) {
