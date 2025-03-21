@@ -1,0 +1,27 @@
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--gold);
+}
+
+.table td {
+    background-color: var(--tertiary-dark);
+    color: var(--light-text);
+}
+
+.table th {
+    background-color: var(--tertiary-dark);
+    font-weight: bold;
+    color: var(--light-text);
+}
+
+.table tr:hover {
+    background-color: var(--tertiary-dark);
+}

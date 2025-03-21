@@ -12,6 +12,7 @@ use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\EstanciaController;
 use App\Http\Controllers\ActualizarCuentaController;
+use App\Http\Controllers\AdminController;
 
 // Rutas de la página de inicio 
 Route::view('/', 'home.index')->name('index');
@@ -24,7 +25,6 @@ Route::view('rooms.suite', 'rooms.suite')->name('suite');
 
 //Ruta info casa
 Route::view('home.casa', 'home.casa')->name('casa');
-Route::view('admin.admin', 'admin.admin')->name('admin');
 Route::view('auth.register', 'auth.register')->name('register');
 Route::get('home.servicios', [ServicioController::class, 'index'])->name('servicios');
 
@@ -69,3 +69,6 @@ Route::delete('/reservas/{id}/cancelar', [ReservaController::class, 'cancel'])->
 Route::delete('/estancias/{id}/pagar', [EstanciaController::class, 'pagar'])->name('estancias.pagar');
 Route::get('/informacion/reserva/{id}', [InformacionController::class, 'mostrarReserva'])->name('mas-info');
 Route::get('/informacion/estancia/{id}', [InformacionController::class, 'mostrarEstancia'])->name('mas-info-estancia');
+
+//Admin
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
