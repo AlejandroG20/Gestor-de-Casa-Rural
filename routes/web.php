@@ -28,12 +28,6 @@ Route::view('home.casa', 'home.casa')->name('casa');
 Route::view('auth.register', 'auth.register')->name('register');
 Route::get('home.servicios', [ServicioController::class, 'index'])->name('servicios');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/cuenta', [ActualizarCuentaController::class, 'edit'])->name('account.edit');
-    Route::put('/cuenta', [ActualizarCuentaController::class, 'update'])->name('updateAccount');
-});
-
-
 // Ruta para mostrar todas las reservas del usuario
 Route::get('auth.cuenta', [CuentaController::class, 'index'])->name('cuenta');
 Route::view('auth.perfil', 'auth.perfil')->name('perfil');

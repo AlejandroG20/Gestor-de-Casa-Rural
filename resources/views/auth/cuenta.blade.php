@@ -19,8 +19,8 @@
                     </p>
 
                     <div class="botones">
-                        <form action="{{ route('perfil') }}" method="GET">
-                            <button class="btn btn-secondary mt-3">Editar Perfil</button>
+                        <form action="{{ route('reservas') }}" method="GET">
+                            <button class="btn btn-secondary mt-3">Reservar</button>
                         </form>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf

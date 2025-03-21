@@ -28,7 +28,7 @@
                         <td>{{ $reserva->usuario->dni }}</td>
                         <td>{{ $reserva->fecha_entrada }}</td>
                         <td>{{ $reserva->fecha_salida }}</td>
-                        <td>{{ $reserva->precio_reserva }}</td>
+                        <td>{{ $reserva->precio_reserva }} €</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -54,7 +54,7 @@
                         <td>{{ $reserva->usuario->dni }}</td>
                         <td>{{ $reserva->fecha_entrada }}</td>
                         <td>{{ $reserva->fecha_salida }}</td>
-                        <td>{{ $reserva->precio_reserva }}</td>
+                        <td>{{ $reserva->precio_reserva }} €</td>
                     </tr>
                 @endforeach
             </tbody>
