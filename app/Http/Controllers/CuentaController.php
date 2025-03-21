@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\Estancia;
-use App\Models\Habitacion;
-use App\Models\Servicio;
 use Illuminate\Support\Facades\Auth;
 
 class CuentaController extends Controller
