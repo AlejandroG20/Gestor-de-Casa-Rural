@@ -11,9 +11,7 @@ class Servicio extends Model
 
     protected $fillable = ['nombre', 'precio'];
 
-    /**
-     * Relación con Reservas (muchos a muchos)
-     */
+ 
     public function reservas()
     {
         return $this->belongsToMany(Reserva::class, 'reserva_servicio');

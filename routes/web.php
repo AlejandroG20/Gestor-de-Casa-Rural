@@ -11,7 +11,6 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\EstanciaController;
-use App\Http\Controllers\ActualizarCuentaController;
 use App\Http\Controllers\AdminController;
 
 // Rutas de la página de inicio 
