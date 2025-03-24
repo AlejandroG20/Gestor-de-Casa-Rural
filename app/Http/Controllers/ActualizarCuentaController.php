@@ -10,14 +10,14 @@ class ActualizarCuentaController extends Controller
 {
     public function edit()
     {
-        $user = Auth::usuario(); // Obtener los datos del usuario autenticado
+        $user = Auth::usuario(); 
         return view('auth.perfil', compact('user'));
     }
 
     public function showProfile()
     {
-        $user = Auth::usuario(); // Obtener el usuario autenticado
-        return view('auth.perfil', compact('user')); // Pasar la variable $user a la vista
+        $user = Auth::usuario(); 
+        return view('auth.perfil', compact('user')); 
     }
 
 
