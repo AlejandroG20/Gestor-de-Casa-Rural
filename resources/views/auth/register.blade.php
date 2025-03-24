@@ -27,10 +27,12 @@
                 <input type="email" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required>
             </div>
             <div class="form-group">
-                <input type="text" name="dni" placeholder="DNI" value="{{ old('dni') }}" required>
+                <input type="text" name="dni" placeholder="DNI" value="{{ old('dni') }}" required
+                    pattern="^\d{8}[A-Za-z]$" title="El DNI debe ser de 8 dígitos seguido de una letra" maxlength="9">
             </div>
             <div class="form-group">
-                <input type="text" name="telefono" placeholder="Teléfono" value="{{ old('telefono') }}" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" value="{{ old('telefono') }}" required
+                    pattern="^[0-9]{9}$" title="El teléfono debe tener 9 dígitos" maxlength="9">
             </div>
             <div class="form-group">
                 <input type="password" name="contraseña" placeholder="Contraseña" required>
