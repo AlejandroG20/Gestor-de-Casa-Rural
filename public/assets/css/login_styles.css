@@ -13,6 +13,7 @@
 }
 
 .login-container input[type="text"],
+.login-container input[type="tel"],
 .login-container input[type="email"],
 .login-container input[type="password"] {
     width: 100%;
@@ -26,6 +27,7 @@
 }
 
 .login-container input[type="text"]:focus,
+.login-container input[type="tel"]:focus,
 .login-container input[type="email"]:focus,
 .login-container input[type="password"]:focus {
     border-color: var(--gold);
